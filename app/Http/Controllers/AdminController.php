@@ -10,9 +10,16 @@ use Auth;
 use CreateTblAdmin;
 use DB;
 use Session;
+//Permission
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class AdminController extends Controller
 {
+    public function permission(){
+       return "ok";
+    }
     public function admin(){
         return view('adminlogin');
     }
@@ -41,18 +48,33 @@ class AdminController extends Controller
         $request = $request->only('email', 'password');        // return $data;
         if (Auth::attempt($request)) {
             $users = Auth::user();
-            session::put('admin_id',$users->id);
-            session::put('admin_name',$users->name);
-            return Redirect::to('admin/dashboard');
+            $checkrole = $users->hasRole('super_admin');
+            if($checkrole){
+                session::put('admin_id',$users->id);
+                session::put('admin_name',$users->name);
+                return Redirect::to('admin/dashboard');
+            }else{
+                session::put('guest_id',$users->id);
+                session::put('guest_name',$users->name);
+                return Redirect::to('guest');
+            }
         } else{
             session::put('message','Tài khoản hoặc mật khẩu không chính xác');
             return Redirect::to('admin')->withInput();
         }
     }
     public function logoutadmin(){
+        $admin_id = Session::has('admin_id');
+        if($admin_id){
             session::put('admin_id', Null);
             session::put('admin_name', Null);
             return Redirect::to('admin');
+        }else{
+            session::put('guest_id', Null);
+            session::put('guest_name', Null);
+            return Redirect::to('admin');
+        }
+           
     }
     public function processed($id){
         $order = OrderModel::find($id);

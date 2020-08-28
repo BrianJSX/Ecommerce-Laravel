@@ -42,7 +42,5 @@ class AppServiceProvider extends ServiceProvider
         $data['sliderindex'] = SliderModel::all();
         $data['url'] = URL::current();
         view()->share($data);
-
-
     }
 }

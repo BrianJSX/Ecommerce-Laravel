@@ -128,7 +128,7 @@ class CartController extends Controller
         Mail::send('test', $data, function ($message) use ($email) {
             $message->from('minho.technology@gmail.com', 'Cửa hàng điện nước phúc lộc');
             $message->to($email, $email);
-            $message->cc('minhho.technology0@gmail.com', 'Minh Hồ');
+            $message->cc('diennuocphuclocorder@gmail.com', 'Minh Hồ');
             $message->subject('Xác nhận hóa đơn mua hàng Phúc Lộc');
            
         });

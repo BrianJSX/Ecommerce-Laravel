@@ -19,9 +19,7 @@ use App\Models\CategoryProductModel;
 use App\Http\Controllers\BrandProduct;
 use App\Models\BrandProductModel;
 use App\Http\Controllers\Product;
-// use App\Models\users;
-
-
+// use App\User;
 
 Route::get('/', 'HomeControler@index');
 Route::get('/home', 'HomeControler@index')->name('home');
@@ -41,16 +39,15 @@ Route::group(['prefix' => 'cart'], function () {
         Route::get('showcomplete','CartController@showcomplete')->name('cartcomplete')->middleware('CheckCart');
         Route::post('showcomplete','CartController@postcomplete')->name('postcomplete')->middleware('CheckCart');
         Route::get('complete','CartController@complete')->name('complete');
-
-        
 });
 // route::get('/mahoa', function(){
-//         $users = new users();
-//         $users->name = 'Onion';
-//         $users->email = 'minhho.technology@gmail.com';
-//         $users->password = bcrypt('lhmdtlla');
+//         $users = new User();
+//         $users->name = 'testuser';
+//         $users->email = 'test@gmail.com';
+//         $users->password = bcrypt('123456');
 //         $users->save();
 // });
+
 
 //----------------------------------------------------------------------------------------------------------------//
 // Admin Sever
@@ -58,19 +55,23 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin','AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
-Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], function () {
-        Route::get('/dashboard','AdminController@dashboard')->name('dashboard');
-        Route::get('/dashboard/processed/{id}','AdminController@processed')->name('dashboardprocessed');
-        Route::get('/dashboard/unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
 
-        Route::get('/logout','AdminController@logoutadmin')->name('logout');
+Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin']], function () {
+
+        //TO DO something
+        Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
         Route::get('/search','AdminController@searchproduct')->name('searchproduct');
-        
-        //Đơn hàng
-        
 
+        //Permission
+        Route::get('/permission', 'Admincontroller@permission');
+        //dashboard
+        Route::group(['prefix' => 'dashboard'], function () {
+                Route::get('/','AdminController@dashboard')->name('dashboard');
+                Route::get('processed/{id}','AdminController@processed')->name('dashboardprocessed');
+                Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
+        });
         //Danh mục sản phẩm
-        Route::group(['prefix' => 'category','middleware' => 'checklogindashboard'], function () {
+        Route::group(['prefix' => 'category',], function () {
                 //Thêm
                 Route::get('/addcategory','CategoryProduct@addcategory')->name('addcategory');
                 Route::post('/addcategory','CategoryProduct@create');
@@ -85,12 +86,12 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], functi
                 //xóa
                         Route::get('destroy/{id}','CategoryProduct@destroy')->name('destroycategory');
                         Route::get('showcategorydesc/{id}','CategoryProduct@showdesc')->name('showdesc');
-               
-                });        
+
+                });
         });
 
         //Hiệu sản phẩm
-        Route::group(['prefix' => 'brand','middleware' => 'checklogindashboard'], function () {
+        Route::group(['prefix' => 'brand'], function () {
                 //thêm
                 Route::get('/addbrand','BrandProduct@addbrand')->name('addbrand');
                 Route::post('/addbrand','BrandProduct@create');
@@ -104,11 +105,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], functi
                         Route::post('editbrand/{id}','BrandProduct@update');
                 //xóa
                         Route::get('destroy/{id}','BrandProduct@destroy')->name('destroyBrand');
-                });     
-        });  
-        
+                });
+        });
+
         //Sản phẩm
-        Route::group(['prefix' => 'product','middleware' => 'checklogindashboard'], function () {
+        Route::group(['prefix' => 'product'], function () {
                 //thêm
                 Route::get('/add','Product@getAddProduct')->name('addproduct');
                 Route::post('/add','Product@postAddProduct');
@@ -121,10 +122,10 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], functi
                         Route::post('editproduct/{id}','Product@update');
                 //xóa
                         Route::get('destroy/{id}/{code}','Product@destroy');
-                });     
-        });  
+                });
+        });
 
-        Route::group(['prefix' => 'news','middleware' => 'checklogindashboard'], function () {
+        Route::group(['prefix' => 'news'], function () {
                 //Thêm
                 Route::get('/addnews','NewsController@addnews')->name('addnews');
                 Route::post('/addnews','NewsController@create');
@@ -139,10 +140,10 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], functi
                 //xóa
                         Route::get('destroy/{id}','NewsController@destroy')->name('destroynews');
                         // Route::get('showinfonews/{id}','NewsController@showinfo')->name('showinfonews');
-               
-                });        
+
+                });
         });
-        Route::group(['prefix' => 'slider','middleware' => 'checklogindashboard'], function () {
+        Route::group(['prefix' => 'slider'], function () {
                 //Thêm
                 Route::get('/addslider','SliderController@addslider')->name('addslider');
                 Route::post('/addslider','SliderController@create');
@@ -158,14 +159,12 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard'], functi
                 //xóa
                         Route::get('destroy/{id}','SliderController@destroy')->name('destroyslider');
                         // Route::get('showcategorydesc/{id}','CategoryProduct@showdesc')->name('showdesc');
-               
-                });        
-        });
 
-       
+                });
+        });
     });
-   
-   
+
+
 
 
 

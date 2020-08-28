@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
+use Auth;
 class checklogindashboard
 {
     /**
@@ -21,6 +22,5 @@ class checklogindashboard
         }else{
             return redirect()->route('admin');
         }
-        
     }
 }

@@ -19,6 +19,7 @@ class checkloginadmin
     public function handle($request, Closure $next)
     {
         $admin_id = Session::has('admin_id');
+        
         if($admin_id){
            return redirect()->route('dashboard');
         }else{
