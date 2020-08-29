@@ -241,7 +241,7 @@
               </a>
               <div class="collapse" id="roles">
                   <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="">Thêm</a>
+                    <li class="nav-item"><a class="nav-link" href="{{route('addrole')}}">Thêm</a>
                       </li>
                     <li class="nav-item"><a class="nav-link" href="{{route('allrole')}}">Tất cả roles</a>
                     </li>
@@ -259,7 +259,7 @@
                 </a>
                 <div class="collapse" id="permissions">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="">Thêm</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('addpermission')}}">Thêm</a>
                         </li>
                     </ul>
                     <ul class="nav flex-column sub-menu">
@@ -355,12 +355,16 @@
     @yield('AddProductContent')
     @yield('AddNewsContent')
     @yield('AddSliderContent')
+    @yield('AddRoleContent')
+    @yield('AddPermissionContent') 
 
     @yield('AllCategoryContent')
     @yield('AllSliderContent')
     @yield('AllNewsContent')
     @yield('allBrand')
     @yield('allProduct')
+    @yield('AllRoleContent')
+    @yield('AllPermissionContent')
 
     @yield('editCategory')
     @yield('editBrand')
@@ -370,8 +374,10 @@
 
     @yield('UserContent')
 
-    @yield('AllRolesContent')
-    @yield('AllPermissionContent')
+    
+   
+    
+    
 
 
 

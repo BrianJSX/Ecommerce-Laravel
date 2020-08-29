@@ -1,5 +1,5 @@
 @extends('adminindex')
-@section('AllRolesContent')
+@section('AllRoleContent')
 <div class="content-wrapper">
         <div class="row">
           <div class="col-md-12 grid-margin">
@@ -37,6 +37,7 @@
                       <tr>
                           <th>ID Role</th>
                           <th>Role Name</th>
+                          <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,17 @@
                         <tr>
                           <td>{{$role->id}}</td>
                           <td>{{$role->name}}</td>
+                          <td>
+                            <a class="btn btn-primary btn-info-category" href="">
+                                  <i class="mdi mdi-table-edit"></i>
+                            </a>
+                            <button type="button" class="btn btn-success btn-info-product" data-url="">
+                                <i class="mdi mdi-information-outline"></i>
+                            </button>
+                            <button class="btn btn-danger btn-destroy-product" data-url="">
+                                <i class="mdi mdi-delete-forever"></i>
+                            </button>
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>

@@ -1,3 +1,8 @@
+
+{{-- Validate FORM --}}
+@foreach ($errors->all() as $error)
+<div class='alert alert-danger'>{{$error}}</div>
+@endforeach
 {{-- Category --}}
 <?php
     $messageAddCate = Session::get('AddCategoryCorrect');
@@ -13,10 +18,6 @@
         session::put('EditCategoryCorrect',Null);
     }  
 ?>
-
-@foreach ($errors->all() as $error)
-<div class='alert alert-danger'>{{$error}}</div>
-@endforeach
 
 {{-- Brand --}}
 <?php

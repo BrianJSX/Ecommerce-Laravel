@@ -67,15 +67,19 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
         });
 
-        //PERMISSIONS
-        Route::group(['prefix' => 'permission'], function () {
-                Route::get('/','PermissionController@allpermission')->name('allpermission');
-               
-        });
-
         //ROLES
         Route::group(['prefix' => 'role'], function () {
                 Route::get('/','RoleController@allrole')->name('allrole');
+                Route::get('/addrole','RoleController@addrole')->name('addrole');
+                Route::post('/addrole','RoleController@create');
+        });
+
+        //PERMISSIONS
+        Route::group(['prefix' => 'permission'], function () {
+                Route::get('/','PermissionController@allpermission')->name('allpermission');
+                Route::get('/addpermission','PermissionController@addpermission')->name('addpermission');
+                Route::post('/addpermission','PermissionController@create');
+               
         });
 
         //USERS

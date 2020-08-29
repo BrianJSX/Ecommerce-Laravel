@@ -37,6 +37,7 @@
                       <tr>
                           <th>ID Permission</th>
                           <th>Permission Name</th>
+                          <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,17 @@
                         <tr>
                           <td>{{$permission->id}}</td>
                           <td>{{$permission->name}}</td>
+                          <td>
+                            <a class="btn btn-primary btn-info-category" href="">
+                                  <i class="mdi mdi-table-edit"></i>
+                            </a>
+                            <button type="button" class="btn btn-success btn-info-product" data-url="">
+                                <i class="mdi mdi-information-outline"></i>
+                            </button>
+                            <button class="btn btn-danger btn-destroy-product" data-url="">
+                                <i class="mdi mdi-delete-forever"></i>
+                            </button>
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>
