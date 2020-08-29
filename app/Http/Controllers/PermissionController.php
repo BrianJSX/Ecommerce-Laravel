@@ -10,7 +10,7 @@ use App\PermissionModel;
 class PermissionController extends Controller
 {
     public function allpermission(){
-        $permissions = PermissionModel::all();
+        $permissions = PermissionModel::paginate(10);
         $data['permissions'] = $permissions;
         return view('admin.allPermission', $data);
     }

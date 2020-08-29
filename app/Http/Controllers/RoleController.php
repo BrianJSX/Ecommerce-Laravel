@@ -10,7 +10,7 @@ use App\RoleModel;
 class RoleController extends Controller
 {
     public function allrole(){
-        $roles = RoleModel::all();
+        $roles = RoleModel::paginate(10);
         $data['roles'] = $roles;
         // dd($data);
         return view('admin.allRoles',$data);
