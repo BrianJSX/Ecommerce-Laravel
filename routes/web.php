@@ -56,26 +56,35 @@ Route::get('admin','AdminController@admin')->name('admin')->middleware('checklog
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
 Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin']], function () {
-
         //TO DO something
         Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
         Route::get('/search','AdminController@searchproduct')->name('searchproduct');
-
-        //Permission
-        Route::get('/permission', 'Admincontroller@permission');
-        //dashboard
+      
+        //DASH BOARD
         Route::group(['prefix' => 'dashboard'], function () {
                 Route::get('/','AdminController@dashboard')->name('dashboard');
                 Route::get('processed/{id}','AdminController@processed')->name('dashboardprocessed');
                 Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
         });
-        //user
-        Route::group(['prefix' => 'user'], function () {
-                Route::get('/','AdminController@alluser')->name('alluser');
+
+        //PERMISSIONS
+        Route::group(['prefix' => 'permission'], function () {
+                Route::get('/','PermissionController@allpermission')->name('allpermission');
                
         });
 
-        //Danh mục sản phẩm
+        //ROLES
+        Route::group(['prefix' => 'role'], function () {
+                Route::get('/','RoleController@allrole')->name('allrole');
+        });
+
+        //USERS
+        Route::group(['prefix' => 'user'], function () {
+                Route::get('/','UserController@alluser')->name('alluser');
+               
+        });
+
+        //CATEGORYS
         Route::group(['prefix' => 'category',], function () {
                 //Thêm
                 Route::get('/addcategory','CategoryProduct@addcategory')->name('addcategory');
@@ -95,7 +104,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 });
         });
 
-        //Hiệu sản phẩm
+        //bRANDS
         Route::group(['prefix' => 'brand'], function () {
                 //thêm
                 Route::get('/addbrand','BrandProduct@addbrand')->name('addbrand');
@@ -113,7 +122,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 });
         });
 
-        //Sản phẩm
+        //PRODUCTS
         Route::group(['prefix' => 'product'], function () {
                 //thêm
                 Route::get('/add','Product@getAddProduct')->name('addproduct');
@@ -129,6 +138,8 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                         Route::get('destroy/{id}/{code}','Product@destroy');
                 });
         });
+
+        //NEWS
 
         Route::group(['prefix' => 'news'], function () {
                 //Thêm
@@ -148,6 +159,8 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
                 });
         });
+
+        //SLIDER
         Route::group(['prefix' => 'slider'], function () {
                 //Thêm
                 Route::get('/addslider','SliderController@addslider')->name('addslider');

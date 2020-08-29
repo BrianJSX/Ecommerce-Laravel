@@ -207,12 +207,18 @@
                     <span class="menu-title">Hiệu sản phẩm</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-              <a class="nav-link" href="">
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('allrole')}}">
                 <i class="mdi mdi-chart-pie menu-icon"></i>
-                <span class="menu-title">Sản phẩm</span>
+                <span class="menu-title">Role</span>
               </a>
-            </li> --}}
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('allpermission')}}">
+                <i class="mdi mdi-chart-pie menu-icon"></i>
+                <span class="menu-title">permission</span>
+              </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('allslider')}}">
                     <i class="mdi mdi-grid-large menu-icon"></i>
@@ -274,6 +280,9 @@
     @yield('editSlider')
 
     @yield('UserContent')
+
+    @yield('AllRolesContent')
+    @yield('AllPermissionContent')
 
 
 

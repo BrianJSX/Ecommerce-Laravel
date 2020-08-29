@@ -100,13 +100,5 @@ class AdminController extends Controller
                                                 ->paginate(10);
         $data['productlist']->appends(['search_product' => $result]);
         return view('admin.searchproduct',$data);
-    }
-    //USER
-    public function alluser(){
-        $users = User::all();
-        $data['users'] = $users;
-        return view('admin.allUser', $data);
-        // dd($data);
-    }
-
+    }  
 }
