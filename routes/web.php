@@ -55,7 +55,6 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin','AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
-
 Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin']], function () {
 
         //TO DO something
@@ -70,6 +69,12 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('processed/{id}','AdminController@processed')->name('dashboardprocessed');
                 Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
         });
+        //user
+        Route::group(['prefix' => 'user'], function () {
+                Route::get('/','AdminController@alluser')->name('alluser');
+               
+        });
+
         //Danh mục sản phẩm
         Route::group(['prefix' => 'category',], function () {
                 //Thêm

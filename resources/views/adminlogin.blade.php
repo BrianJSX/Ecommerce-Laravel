@@ -29,9 +29,6 @@
                 <img src="{{URL::to('public/frontend/assets/img/logo/pc.png')}}" alt="logo">
               </div>
               <h4>Xin Chào!! </h4>
-            <?php echo Session::get('admin_id');?>
-            <?php echo Session::get('admin_name');?>
-
               <h6 class="font-weight-light">Chúc bạn có một ngày tốt lành</h6>
             <form class="pt-3" method="POST">
              

@@ -10,6 +10,7 @@ use Auth;
 use CreateTblAdmin;
 use DB;
 use Session;
+use App\User;
 //Permission
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -35,7 +36,7 @@ class AdminController extends Controller
         $data['countproductadmin'] = $product;
         $data['countcategoryadmin'] = $category;
         $data['countbrandadmin'] = $brand;
-        $data['orderdetail'] = OrderModel::orderBy('order_id','desc')->paginate(10);
+        $data['orderdetail'] = OrderModel::paginate(15);
         $data['countorder'] = $order;
         $data['ordertotal'] = $totalorder;
         $data['ordertotalprocessed'] = $totalorderprocessed;
@@ -99,8 +100,13 @@ class AdminController extends Controller
                                                 ->paginate(10);
         $data['productlist']->appends(['search_product' => $result]);
         return view('admin.searchproduct',$data);
+    }
+    //USER
+    public function alluser(){
+        $users = User::all();
+        $data['users'] = $users;
+        return view('admin.allUser', $data);
         // dd($data);
-
     }
 
 }

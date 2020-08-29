@@ -226,7 +226,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-7 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
@@ -249,7 +249,7 @@
               <canvas id="total-sales-chart"></canvas>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-md-12 stretch-card">
             <div class="card">
