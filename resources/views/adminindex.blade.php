@@ -300,7 +300,7 @@
               </a>
               <div class="collapse" id="users">
                   <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="">Thêm</a>
+                      <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
                       </li>
                   </ul>
                   <ul class="nav flex-column sub-menu">
@@ -356,7 +356,8 @@
     @yield('AddNewsContent')
     @yield('AddSliderContent')
     @yield('AddRoleContent')
-    @yield('AddPermissionContent') 
+    @yield('AddPermissionContent')
+    @yield('AddUserContent')
 
     @yield('AllCategoryContent')
     @yield('AllSliderContent')
@@ -374,10 +375,10 @@
 
     @yield('UserContent')
 
-    
-   
-    
-    
+
+
+
+
 
 
 

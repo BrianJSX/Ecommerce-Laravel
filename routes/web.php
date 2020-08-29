@@ -55,11 +55,11 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin','AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
-Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin']], function () {
+Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin|admin']], function () {
         //TO DO something
         Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
         Route::get('/search','AdminController@searchproduct')->name('searchproduct');
-      
+
         //DASH BOARD
         Route::group(['prefix' => 'dashboard'], function () {
                 Route::get('/','AdminController@dashboard')->name('dashboard');
@@ -79,13 +79,14 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('/','PermissionController@allpermission')->name('allpermission');
                 Route::get('/addpermission','PermissionController@addpermission')->name('addpermission');
                 Route::post('/addpermission','PermissionController@create');
-               
+
         });
 
         //USERS
         Route::group(['prefix' => 'user'], function () {
                 Route::get('/','UserController@alluser')->name('alluser');
-               
+                Route::get('/adduser','UserController@adduser')->name('adduser');
+                Route::post('/adduser', 'UserController@create');
         });
 
         //CATEGORYS
@@ -108,7 +109,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 });
         });
 
-        //bRANDS
+        //BRANDS
         Route::group(['prefix' => 'brand'], function () {
                 //thêm
                 Route::get('/addbrand','BrandProduct@addbrand')->name('addbrand');

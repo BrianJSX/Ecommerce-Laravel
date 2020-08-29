@@ -41,6 +41,7 @@
                           <th>Phone</th>
                           <th>Roles</th>
                           <th>Permissions</th>
+                          <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -68,6 +69,17 @@
                             <span class="badge badge-pill badge-primary">{{$permission->name}}</span>
                           @endforeach
                         </td>
+                        <td>
+                            <a class="btn btn-primary btn-info-category" href="">
+                                  <i class="mdi mdi-table-edit"></i>
+                            </a>
+                            <button type="button" class="btn btn-success btn-info-product" data-url="">
+                                <i class="mdi mdi-information-outline"></i>
+                            </button>
+                            <button class="btn btn-danger btn-destroy-product" data-url="">
+                                <i class="mdi mdi-delete-forever"></i>
+                            </button>
+                          </td>
                       </tr>
                       @endforeach
                     </tbody>
