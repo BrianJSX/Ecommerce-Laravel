@@ -49,10 +49,10 @@
                             <a class="btn btn-primary btn-info-category" href="">
                                   <i class="mdi mdi-table-edit"></i>
                             </a>
-                            <button type="button" class="btn btn-success btn-info-product" data-url="">
+                            {{-- <button type="button" class="btn btn-success btn-info-product" data-url="">
                                 <i class="mdi mdi-information-outline"></i>
-                            </button>
-                            <button class="btn btn-danger btn-destroy-product" data-url="">
+                            </button> --}}
+                            <button class="btn btn-danger btn-destroy-role" data-toggle="modal" data-target="#modelId" data-url="{{route('detroyrole',$role->id)}}">
                                 <i class="mdi mdi-delete-forever"></i>
                             </button>
                           </td>

@@ -72,6 +72,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('/','RoleController@allrole')->name('allrole');
                 Route::get('/addrole','RoleController@addrole')->name('addrole');
                 Route::post('/addrole','RoleController@create');
+                Route::get('/detroyrole/{id}','RoleController@detroy')->name('detroyrole');
         });
 
         //PERMISSIONS
@@ -79,6 +80,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('/','PermissionController@allpermission')->name('allpermission');
                 Route::get('/addpermission','PermissionController@addpermission')->name('addpermission');
                 Route::post('/addpermission','PermissionController@create');
+                Route::get('/detroypermission/{id}','PermissionController@destroy')->name('destroypermission');
 
         });
 

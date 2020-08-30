@@ -22,4 +22,7 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->role_name]);
         return back();
     }
+    public function detroy($id){
+        $detroy = RoleModel::destroy($id);
+    }
 }

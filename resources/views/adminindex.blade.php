@@ -269,6 +269,26 @@
                 </div>
             </li>
 
+            {{-- decentralization --}}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#decentralizations" aria-expanded="false"
+                  aria-controls="ui-basic">
+                  <i class="mdi mdi-clipboard-account menu-icon"></i>
+                    <span class="menu-title">Decentralization</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="decentralizations">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="">Thêm</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="">Tất cả permissions</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             {{-- SLIDER --}}
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"

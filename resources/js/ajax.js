@@ -1,15 +1,15 @@
 
 
 $(document).ready(function(){
-   
+
     //-----------------Hiển thị tất cả thông tin danh mục ------------------//
     $('.btn-info-category').on('click',function(){
          var url = $(this).attr('data-url');
         $.ajax({
-            type: 'get',
+            method: 'get',
             url :  url ,
             datatype: 'json',
-            success: function(response){             
+            success: function(response){
                 $('textarea.category_desc').val(response.data.category_desc);
               },
         });
@@ -19,9 +19,9 @@ $(document).ready(function(){
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                type: 'get',
+                method: 'get',
                 url : url,
-                success: function(){   
+                success: function(){
                       window.location.reload();
                       alert("xóa danh mục thành công");
                 },
@@ -33,24 +33,24 @@ $(document).ready(function(){
     $('.btn-info-brand').on('click',function(){
         var url = $(this).attr('data-url');
        $.ajax({
-           type: 'get',
+           method: 'get',
            url :  url ,
            datatype: 'json',
-           success: function(response){             
+           success: function(response){
                $('textarea.form-control.brand_desc').val(response.data.brand_desc);
              },
        });
     });
-    
+
     //-----------------Xóa Thương Hiệu------------------//
        $('.btn-destroy-brand').on('click',function(){
         //    alert('ok');
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                type: 'get',
+                method: 'get',
                 url : url,
-                success: function(){   
+                success: function(){
                       window.location.reload();
                       alert("xóa thương hiệu thành công");
                 },
@@ -62,10 +62,10 @@ $(document).ready(function(){
         var url = $(this).attr('data-url');
         // console.log(url);
         $.ajax({
-            type: 'get',
+            method: 'get',
             url :  url ,
             datatype: 'json',
-            success: function(response){             
+            success: function(response){
                 $('#accessoriesshow').val(response.data.prod_accessories);
                 $('#wanrrantyshow').val(response.data.prod_warranty);
                 $('#promotionshow').val(response.data.prod_promotion);
@@ -79,10 +79,10 @@ $(document).ready(function(){
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                type: 'get',
+                method: 'get',
                 url :  url ,
                 datatype: 'json',
-                success: function(response){             
+                success: function(response){
                     window.location.reload();
                     alert("xóa sản phẩm thành công");
                 }
@@ -94,10 +94,10 @@ $(document).ready(function(){
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                type: 'get',
+                method: 'get',
                 url :  url ,
                 datatype: 'json',
-                success: function(response){             
+                success: function(response){
                     window.location.reload();
                     alert("xóa sản phẩm thành công");
                 }
@@ -108,30 +108,62 @@ $(document).ready(function(){
     $('.btn-info-slider').on('click',function(){
         var url = $(this).attr('data-url');
        $.ajax({
-           type: 'get',
+           method: 'get',
            url :  url ,
            datatype: 'json',
-           success: function(response){             
+           success: function(response){
                $('textarea#slider_content').val(response.data.slider_content);
              },
        });
     });
      //--------------Xóa tin tức----------------//
-     $('.btn-destroy-slider').on('click',function(){
+    $('.btn-destroy-slider').on('click',function(){
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                type: 'get',
+                method: 'get',
                 url :  url ,
                 datatype: 'json',
-                success: function(response){             
+                success: function(response){
                     window.location.reload();
                     alert("xóa sản phẩm thành công");
                 }
             });
         }
     });
-    
-  
-   
+
+    //-------------Xóa role--------------------//
+    $('.btn-destroy-role').on('click',function(){
+        if(confirm('bạn có muốn xóa không??')){
+            var url = $(this).attr('data-url');
+            $.ajax({
+                method: 'get',
+                url :  url ,
+                datatype: 'json',
+                success: function(response){
+                    window.location.reload();
+                    alert("xóa sản phẩm thành công");
+                }
+            });
+        }
+    });
+
+    //-------------Xóa permission--------------------//
+    $('.btn-destroy-permission').on('click',function(){
+        if(confirm('bạn có muốn xóa không??')){
+            var url = $(this).attr('data-url');
+            $.ajax({
+                method: 'method:get',
+                url :  url ,
+                datatype: 'json',
+                success: function(response){
+                    window.location.reload();
+                    alert("xóa sản phẩm thành công");
+                }
+            });
+        }
+    });
+
+
+
 });

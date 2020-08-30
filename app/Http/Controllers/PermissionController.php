@@ -8,8 +8,7 @@ use Spatie\Permission\Models\Permission;
 use App\PermissionModel;
 use App\Http\Requests\AddPermissionRequest;
 
-class PermissionController extends Controller
-{
+class PermissionController extends Controller{
     public function allpermission(){
         $permissions = PermissionModel::paginate(10);
         $data['permissions'] = $permissions;
@@ -19,7 +18,10 @@ class PermissionController extends Controller
         return view('admin.addPermission');
     }
     public function create(AddPermissionRequest $request){
-      $permission = Permission::create(['name' => $request->permission_name]);
-      return back();
+        $permission = Permission::create(['name' => $request->permission_name]);
+        return back();
+    }
+    public function destroy($id){
+        $permission = PermissionModel::destroy($id);
     }
 }
