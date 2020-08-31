@@ -89,6 +89,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('/','UserController@alluser')->name('alluser');
                 Route::get('/adduser','UserController@adduser')->name('adduser');
                 Route::post('/adduser', 'UserController@create');
+                Route::get('/destroyuser/{id}', 'UserController@destroy')->name('destroyuser');
         });
 
         //CATEGORYS

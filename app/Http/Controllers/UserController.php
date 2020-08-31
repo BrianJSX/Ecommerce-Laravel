@@ -26,10 +26,12 @@ class UserController extends Controller
             $user->phone = $request->user_phone;
             $user->password = bcrypt($request->user_password);
             $user->save();
-            dd($user);
+            return back();
         }else{
             return "not ok";
         }
-
+    }
+    public function destroy($id){
+        $destroy = User::destroy($id);
     }
 }

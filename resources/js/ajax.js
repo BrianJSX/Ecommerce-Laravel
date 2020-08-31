@@ -153,7 +153,7 @@ $(document).ready(function(){
         if(confirm('bạn có muốn xóa không??')){
             var url = $(this).attr('data-url');
             $.ajax({
-                method: 'method:get',
+                method: 'get',
                 url :  url ,
                 datatype: 'json',
                 success: function(response){
@@ -163,7 +163,19 @@ $(document).ready(function(){
             });
         }
     });
-
-
-
+        //-------------Xóa User--------------------//
+    $('.btn-destroy-user').on('click',function(){
+        if(confirm('bạn có muốn xóa không??')){
+            var url = $(this).attr('data-url');
+            $.ajax({
+                method: 'get',
+                url :  url ,
+                datatype: 'json',
+                success: function(response){
+                    window.location.reload();
+                    alert("xóa sản phẩm thành công");
+                }
+            });
+        }
+    });
 });
