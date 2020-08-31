@@ -84,6 +84,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
         });
 
+        //Decentralization
+        Route::group(['prefix' => 'decentralization'], function () {
+            Route::get('/','DecentralizationController@adddecentralization')->name('adddecentralization');
+        });
+
         //USERS
         Route::group(['prefix' => 'user'], function () {
                 Route::get('/','UserController@alluser')->name('alluser');

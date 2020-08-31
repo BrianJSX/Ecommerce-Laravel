@@ -279,11 +279,7 @@
                 </a>
                 <div class="collapse" id="decentralizations">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="">Thêm</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="">Tất cả permissions</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm</a>
                         </li>
                     </ul>
                 </div>
