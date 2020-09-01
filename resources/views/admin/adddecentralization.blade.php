@@ -10,14 +10,6 @@
       <form class="forms-sample" action="" method="post">
         {{csrf_field()}}
         <div class="form-group">
-            <label for="exampleInputName1">Users *</label>
-            <select name="Users_decentralization" class="form-control" id="exampleSelectGender" required>
-                @foreach ($users as $user)
-                    <option value="{{$user->name}}">{{$user->name}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="exampleInputName1">Roles *</label>
             <select name="Roles_decentralization" class="form-control" id="exampleSelectGender" required>
                 @foreach ($roles as $role)

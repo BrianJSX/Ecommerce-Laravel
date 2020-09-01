@@ -19,7 +19,6 @@ use App\Models\CategoryProductModel;
 use App\Http\Controllers\BrandProduct;
 use App\Models\BrandProductModel;
 use App\Http\Controllers\Product;
-// use App\User;
 
 Route::get('/', 'HomeControler@index');
 Route::get('/home', 'HomeControler@index')->name('home');
@@ -86,7 +85,8 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
         //Decentralization
         Route::group(['prefix' => 'decentralization'], function () {
-            Route::get('/','DecentralizationController@adddecentralization')->name('adddecentralization');
+            Route::get('/adddecentralization','DecentralizationController@adddecentralization')->name('adddecentralization');
+            Route::post('/adddecentralization' , 'DecentralizationController@create');
         });
 
         //USERS
