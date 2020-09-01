@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\User;
 use App\RoleModel;
 use App\PermissionModel;
+use Session;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class DecentralizationController extends Controller{
-    public function adddecentralization(){
+    public function addDecentralization(){
         $roles = RoleModel::all();
         $permissions = PermissionModel::all();
 
@@ -19,6 +20,15 @@ class DecentralizationController extends Controller{
 
         return view('admin.adddecentralization',$data);
     }
+
+    public function showPermissionOfRole(){
+        $permissionOfRole = Role::with('permissions')->get();
+        $data['PerWithRoles'] = $permissionOfRole;
+        // dd($data);
+
+        return view('admin.allPermissionRole',$data);
+    }
+
     public function create(Request $request){
 
         $qrole = $request->Roles_decentralization;
@@ -28,9 +38,14 @@ class DecentralizationController extends Controller{
 
         $checkrole = $role->hasPermissionTo($qpermission);
         if($checkrole){
-            return 'Permission đã có trong Roles';
+            Session::put('AddRoleToPermissionError','Permission đã có trong role');
+            return back();
         }
-        return "chưa có";
-
+            $role->givePermissionTo($qpermission);
+            Session::put('AddRoleToPermissionCorrect','Thêm permission vào role thành công');
+            return back();
+    }
+    public function destroy($id){
+     return "ok";
     }
 }

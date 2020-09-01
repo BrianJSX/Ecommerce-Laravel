@@ -279,7 +279,11 @@
                 </a>
                 <div class="collapse" id="decentralizations">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission cho Roles</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Tất cả quyền trong role</a>
                         </li>
                     </ul>
                 </div>
@@ -382,6 +386,7 @@
     @yield('allProduct')
     @yield('AllRoleContent')
     @yield('AllPermissionContent')
+    @yield('AllPermissionRoleContent')
 
     @yield('editCategory')
     @yield('editBrand')
