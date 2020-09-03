@@ -124,18 +124,18 @@
                             <div class="col-lg-1 col-md-1 col-sm-5 col-5">
                                 <div class="language-currency">
                                     <div class="language">
-                                        {{-- <select class="select-header orderby">
+                                        <select class="select-header orderby">
                                             <option value="">ENGLISH</option>
                                             <option value="">BANGLA </option>
                                             <option value="">HINDI</option>
-                                        </select> --}}
+                                        </select>
                                     </div>
                                     <div class="currency">
-                                        {{-- <select class="select-header orderby">
+                                        <select class="select-header orderby">
                                             <option value="">USD</option>
                                             <option value="">US </option>
                                             <option value="">EURO</option>
-                                        </select> --}}
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="sticky-logo">
@@ -154,12 +154,12 @@
                                         <nav>
                                             <ul>
                                                 <li>
-                                                    <a style="font-size:20px;color:black;" href="{{route('home')}}"><b>Trang chủ</b></a>
+                                                    <a href="{{route('home')}}"><b>Trang chủ</b></a>
                                                 </li>
                                                 <li>
-                                                    <a style="font-size:20px;color:black;" href="{{route('shopindex')}}"><b>Cửa Hàng</b></a>
+                                                    <a href="{{route('shopindex')}}"><b>Cửa Hàng</b></a>
                                                 </li>
-                                                <li><a style="font-size:20px;color:black;" href="javascript:void(0)"><b>Danh Mục <i class="ion-ios-arrow-down"></i></b></a>
+                                                <li><a  href="javascript:void(0)"><b>Danh Mục <i class="ion-ios-arrow-down"></i></b></a>
                                                     <ul>
                                                         @foreach ($categoryindex as $category)
                                                             @if ($category->category_status == 1)
@@ -168,7 +168,7 @@
                                                         @endforeach
                                                     </ul>
                                                 </li>
-                                                <li><a style="font-size:20px;color:black;" href="javascript:void(0)"><b>Thương Hiệu <i class="ion-ios-arrow-down"></i></b></a>
+                                                <li><a  href="javascript:void(0)"><b>Thương Hiệu <i class="ion-ios-arrow-down"></i></b></a>
                                                     <ul>
                                                         @foreach ($brandindex as $brand)
                                                            @if ($brand->brand_status == 1)
@@ -178,7 +178,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <a style="font-size:20px;color:black;" href="{{route('news')}}"><b>Blog</b></a>
+                                                    <a  href="{{route('news')}}"><b>Blog</b></a>
                                                 </li>
                                             </ul>
                                         </nav>
