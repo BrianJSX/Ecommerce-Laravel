@@ -126,16 +126,15 @@
                                     <div class="language">
                                         <select class="select-header orderby">
                                             <option value="">ENGLISH</option>
-                                            <option value="">BANGLA </option>
-                                            <option value="">HINDI</option>
+                                            <option value="">VIE</option>
                                         </select>
                                     </div>
                                     <div class="currency">
-                                        <select class="select-header orderby">
+                                        {{-- <select class="select-header orderby">
                                             <option value="">USD</option>
                                             <option value="">US </option>
                                             <option value="">EURO</option>
-                                        </select>
+                                        </select> --}}
                                     </div>
                                 </div>
                                 <div class="sticky-logo">
