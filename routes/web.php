@@ -54,7 +54,7 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin','AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
-Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:super_admin|admin']], function () {
+Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:Super_admin|admin']], function () {
         //TO DO something
         Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
         Route::get('/search','AdminController@searchproduct')->name('searchproduct');
@@ -104,9 +104,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
         //USERS
         Route::group(['prefix' => 'user'], function () {
-                Route::get('/','UserController@alluser')->name('alluser');
+                Route::get('/alluser','UserController@alluser')->name('alluser');
                 Route::get('/adduser','UserController@adduser')->name('adduser');
                 Route::post('/adduser', 'UserController@createPermissionRoles');
+                Route::get('/edituser/{id}', 'UserController@editUser')->name('edituser');
+                Route::post('/edituser/{id}', 'UserController@update');
                 Route::get('/destroyuser/{id}', 'UserController@destroy')->name('destroyuser');
         });
 

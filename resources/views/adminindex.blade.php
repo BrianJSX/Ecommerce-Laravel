@@ -291,7 +291,6 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Xóa Roles trong Users</a>
                         </li>
                     </ul>
-
                 </div>
             </li>
 
@@ -405,6 +404,7 @@
     @yield('editPermission')
     @yield('editRolePermission')
     @yield('editRoleUser')
+    @yield('EditUser')
 
     @yield('UserContent')
 

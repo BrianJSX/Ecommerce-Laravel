@@ -70,7 +70,7 @@
                           @endforeach
                         </td>
                         <td>
-                            <a class="btn btn-primary btn-info-category" href="">
+                            <a class="btn btn-primary btn-info-category" href="{{route('edituser', $user->id)}}">
                                   <i class="mdi mdi-table-edit"></i>
                             </a>
                             <button class="btn btn-danger btn-destroy-user" data-url="{{route('destroyuser',$user->id)}}">

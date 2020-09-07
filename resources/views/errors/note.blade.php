@@ -3,7 +3,14 @@
 @foreach ($errors->all() as $error)
     <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
-
+{{-- edit infomation User --}}
+<?php
+    $editUserCorrect  = Session::get('EditUserCorrect');
+    if($editUserCorrect){
+        echo "<div class='alert alert-success'>".$editUserCorrect."</div>";
+        session::put('EditUserCorrect', Null);
+    }
+?>
 {{-- remove Role of user  --}}
 <?php
     $removeRoleUser  = Session::get('removeRoleUser');
