@@ -3,6 +3,14 @@
 @foreach ($errors->all() as $error)
     <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
+{{-- remove Permission --}}
+<?php
+    $removePermissionRole  = Session::get('RemovePermissionRoleCorrect');
+    if($removePermissionRole){
+        echo "<div class='alert alert-success'>".$removePermissionRole."</div>";
+        session::put('RemovePermissionRoleCorrect', Null);
+    }
+?>
 {{-- edit permission --}}
 <?php
     $messageEditPermissionCorrect = Session::get('editPermissionCorrect');

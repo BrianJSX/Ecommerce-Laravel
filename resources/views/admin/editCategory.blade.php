@@ -20,7 +20,7 @@
                     <option value="{{$brand->brand_id}}" @if($cate->category_brand == $brand->brand_id) selected @endif >{{$brand->brand_name}}</option>
                   @endforeach
                 </select>
-              </div> 
+          </div>
           <div class="form-group">
             <label for="exampleTextarea1">Mô tả *</label>
           <textarea name="category_product_desc" class="form-control" id="exampleTextarea1" rows="4" placeholder="Mô tả danh mục..." required>{{$cate->category_desc}}</textarea>

@@ -254,7 +254,7 @@
                 <a class="nav-link" data-toggle="collapse" href="#permissions" aria-expanded="false"
                   aria-controls="ui-basic">
                   <i class="mdi mdi-chart-pie menu-icon"></i>
-                    <span class="menu-title">Permission</span>
+                    <span class="menu-title">Permissions</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="permissions">
@@ -290,7 +290,6 @@
                         <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Tất cả quyền trong role</a>
                         </li>
                     </ul>
-
                 </div>
             </li>
 
@@ -401,6 +400,7 @@
     @yield('editSlider')
     @yield('editRole')
     @yield('editPermission')
+    @yield('editRolePermission')
 
     @yield('UserContent')
 

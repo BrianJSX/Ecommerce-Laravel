@@ -52,12 +52,12 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary btn-info-category" href="">
+                                    <a class="btn btn-warning btn-info-category" href="{{route('editrolepermission',$PerWithRole->id)}}">
                                             <i class="mdi mdi-table-edit"></i>
                                     </a>
-                                    <button class="btn btn-danger btn-destroy-dec" data-url="">
+                                    {{-- <button class="btn btn-danger btn-destroy-dec" data-url="">
                                         <i class="mdi mdi-delete-forever"></i>
-                                    </button>
+                                    </button> --}}
                                 </td>
                             </tr>
                         @endforeach

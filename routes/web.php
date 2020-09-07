@@ -84,7 +84,6 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 Route::get('/editPermission/{id}', 'PermissionController@editpermission')->name('editpermission');
                 Route::post('/editPermission/{id}', 'PermissionController@update');
                 Route::get('/detroyPermission/{id}','PermissionController@destroy')->name('destroypermission');
-
         });
 
         //Decentralization
@@ -94,6 +93,8 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
             Route::get('/allPermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
             Route::get('/addRoleUser', 'DecentralizationController@addRoleOfUser')->name('addrolesuser');
             Route::post('/addRoleUser', 'DecentralizationController@createRoleOfUser');
+            Route::get('/editRolePermission/{id}', 'DecentralizationController@editRolePermission')->name('editrolepermission');
+            Route::post('/editRolePermission/{id}', 'DecentralizationController@revokedPermissionRole');
         });
 
         //USERS
