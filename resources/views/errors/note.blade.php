@@ -1,8 +1,16 @@
 
 {{-- Validate FORM --}}
 @foreach ($errors->all() as $error)
-<div class='alert alert-danger'>{{$error}}</div>
+    <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
+{{-- edit permission --}}
+<?php
+    $messageEditPermissionCorrect = Session::get('editPermissionCorrect');
+    if($messageEditPermissionCorrect){
+        echo "<div class='alert alert-success'>".$messageEditPermissionCorrect."</div>";
+        session::put('editPermissionCorrect', Null);
+    }
+?>
 {{-- edit role --}}
 <?php
     $messageEditRoleCorrect = Session::get('editRoleCorrect');

@@ -78,10 +78,12 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
         //PERMISSIONS
         Route::group(['prefix' => 'permission'], function () {
-                Route::get('/allpermission','PermissionController@allpermission')->name('allpermission');
-                Route::get('/addpermission','PermissionController@addpermission')->name('addpermission');
-                Route::post('/addpermission','PermissionController@create');
-                Route::get('/detroypermission/{id}','PermissionController@destroy')->name('destroypermission');
+                Route::get('/allPermission','PermissionController@allpermission')->name('allpermission');
+                Route::get('/addPermission','PermissionController@addpermission')->name('addpermission');
+                Route::post('/addPermission','PermissionController@create');
+                Route::get('/editPermission/{id}', 'PermissionController@editpermission')->name('editpermission');
+                Route::post('/editPermission/{id}', 'PermissionController@update');
+                Route::get('/detroyPermission/{id}','PermissionController@destroy')->name('destroypermission');
 
         });
 

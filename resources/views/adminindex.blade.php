@@ -400,6 +400,7 @@
     @yield('editNews')
     @yield('editSlider')
     @yield('editRole')
+    @yield('editPermission')
 
     @yield('UserContent')
 

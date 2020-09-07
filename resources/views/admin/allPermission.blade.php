@@ -46,7 +46,7 @@
                           <td>{{$permission->id}}</td>
                           <td>{{$permission->name}}</td>
                           <td>
-                            <a class="btn btn-primary btn-info-category" href="">
+                            <a class="btn btn-primary btn-info-category" href="{{route("editpermission", $permission->id)}}">
                                   <i class="mdi mdi-table-edit"></i>
                             </a>
                             <button class="btn btn-danger btn-destroy-product" data-url="{{route("destroypermission",$permission->id)}}">
