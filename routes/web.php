@@ -91,10 +91,15 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
             Route::get('/addDecentralization','DecentralizationController@adddecentralization')->name('adddecentralization');
             Route::post('/addDecentralization' , 'DecentralizationController@createPermissionRoles');
             Route::get('/allPermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
+            Route::get('/allRoleUser', 'DecentralizationController@allRoleOfUser')->name('showroleofuser');
             Route::get('/addRoleUser', 'DecentralizationController@addRoleOfUser')->name('addrolesuser');
             Route::post('/addRoleUser', 'DecentralizationController@createRoleOfUser');
             Route::get('/editRolePermission/{id}', 'DecentralizationController@editRolePermission')->name('editrolepermission');
             Route::post('/editRolePermission/{id}', 'DecentralizationController@revokedPermissionRole');
+            Route::get('/editRoleUser/{id}', 'DecentralizationController@editRoleUser')->name('editroleuser');
+            Route::post('/editRoleUser/{id}', 'DecentralizationController@revokedRoleUser');
+
+
         });
 
         //USERS

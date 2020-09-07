@@ -30,6 +30,14 @@ class DecentralizationController extends Controller{
         return back();
     }
 
+    public function revokedRoleUser(Request $request, $id){
+        $qrole = $request->role_name;
+        $user = User::where('id', $id)->first();
+        $user->removeRole($qrole);
+        Session::put('removeRoleUser', 'Xóa Roles thành công');
+        return back();
+    }
+
     public function addDecentralization(){
         $roles = RoleModel::all();
         $permissions = PermissionModel::all();
@@ -46,12 +54,27 @@ class DecentralizationController extends Controller{
         // dd($data);
         return view('admin.allPermissionRole',$data);
     }
+    public function allRoleOfUser(){
+        $users = User::with('roles')->get();
+        $data['users'] = $users;
+        return view('admin.allRoleUser', $data);
+    }
 
     public function editRolePermission($id){
         $data['role'] = Role::where("id", $id)->first();
         $data['perWithRole'] = Role::where("id", $id)->with("permissions")->first();
         return view('admin.editRolePermission', $data);
     }
+
+    public function editRoleUser($id){
+        $checkId = User::where('id', $id)->count();
+        if($checkId > 0){
+            $data['users'] = User::where('id', $id)->with('roles')->first();
+            return view('admin.editRoleUser', $data);
+        }
+        return redirect()->route('showroleofuser');
+    }
+
     public function createPermissionRoles(Request $request){
         $qrole = $request->Roles_decentralization;
         $qpermission = $request->Permissions_decentralization;

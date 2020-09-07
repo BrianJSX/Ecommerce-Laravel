@@ -3,6 +3,16 @@
 @foreach ($errors->all() as $error)
     <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
+
+{{-- remove Role of user  --}}
+<?php
+    $removeRoleUser  = Session::get('removeRoleUser');
+    if($removeRoleUser){
+        echo "<div class='alert alert-success'>".$removeRoleUser."</div>";
+        session::put('removeRoleUser', Null);
+    }
+?>
+
 {{-- remove Permission --}}
 <?php
     $removePermissionRole  = Session::get('RemovePermissionRoleCorrect');

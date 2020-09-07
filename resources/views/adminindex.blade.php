@@ -279,17 +279,19 @@
                 </a>
                 <div class="collapse" id="decentralizations">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission cho Roles</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission trong Roles</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Xóa Permission trong Roles</a>
                         </li>
                     </ul>
+
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm roles cho users</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm Roles cho Users</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Xóa Roles trong Users</a>
                         </li>
                     </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Tất cả quyền trong role</a>
-                        </li>
-                    </ul>
+
                 </div>
             </li>
 
@@ -392,6 +394,7 @@
     @yield('AllRoleContent')
     @yield('AllPermissionContent')
     @yield('AllPermissionRoleContent')
+    @yield('AllRoleUserContent')
 
     @yield('editCategory')
     @yield('editBrand')
@@ -401,6 +404,7 @@
     @yield('editRole')
     @yield('editPermission')
     @yield('editRolePermission')
+    @yield('editRoleUser')
 
     @yield('UserContent')
 
