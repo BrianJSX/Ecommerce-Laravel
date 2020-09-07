@@ -283,9 +283,14 @@
                         </li>
                     </ul>
                     <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm roles cho users</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Tất cả quyền trong role</a>
                         </li>
                     </ul>
+
                 </div>
             </li>
 
@@ -378,6 +383,7 @@
     @yield('AddRoleContent')
     @yield('AddPermissionContent')
     @yield('AddUserContent')
+    @yield('AddRolesUserContent')
 
     @yield('AllCategoryContent')
     @yield('AllSliderContent')

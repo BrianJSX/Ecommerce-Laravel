@@ -3,7 +3,21 @@
 @foreach ($errors->all() as $error)
 <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
-
+{{-- Add Roles of User --}}
+<?php
+    $messageAddRolesUserError = Session::get('RoleOfUserError');
+    if($messageAddRolesUserError){
+        echo "<div class='alert alert-danger'>".$messageAddRolesUserError."</div>";
+        session::put('RoleOfUserError',Null);
+    }
+?>
+<?php
+    $messageAddRolesUserCorrect = Session::get('RoleOfUserCorrect');
+    if($messageAddRolesUserCorrect){
+        echo "<div class='alert alert-success'>".$messageAddRolesUserCorrect."</div>";
+        session::put('RoleOfUserCorrect',Null);
+    }
+?>
 {{-- AddPermissionToRole --}}
 <?php
     $messageAddCateEr = Session::get('AddRoleToPermissionError');
@@ -100,3 +114,6 @@ if($messageEditSlider){
     session::put('EditSliderCorrect',Null);
 }
 ?>
+
+
+

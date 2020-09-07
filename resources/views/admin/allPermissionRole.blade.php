@@ -38,6 +38,7 @@
                           <th>ID Roles</th>
                           <th>Roles</th>
                           <th>Permission</th>
+                          <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,14 @@
                                     @foreach ($PerWithRole["permissions"] as $item)
                                         <span class="badge badge-pill badge-primary">{{ $item->name }}</span>
                                     @endforeach
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-info-category" href="">
+                                            <i class="mdi mdi-table-edit"></i>
+                                    </a>
+                                    <button class="btn btn-danger btn-destroy-dec" data-url="">
+                                        <i class="mdi mdi-delete-forever"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

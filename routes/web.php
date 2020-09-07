@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
 
         //PERMISSIONS
         Route::group(['prefix' => 'permission'], function () {
-                Route::get('/','PermissionController@allpermission')->name('allpermission');
+                Route::get('/allpermission','PermissionController@allpermission')->name('allpermission');
                 Route::get('/addpermission','PermissionController@addpermission')->name('addpermission');
                 Route::post('/addpermission','PermissionController@create');
                 Route::get('/detroypermission/{id}','PermissionController@destroy')->name('destroypermission');
@@ -86,15 +86,17 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
         //Decentralization
         Route::group(['prefix' => 'decentralization'], function () {
             Route::get('/addDecentralization','DecentralizationController@adddecentralization')->name('adddecentralization');
-            Route::post('/addDecentralization' , 'DecentralizationController@create');
-            Route::get('/showpermissionrole', 'DecentralizationController@showPermissionOfRole')->name('showpermissionofrole');
+            Route::post('/addDecentralization' , 'DecentralizationController@createPermissionRoles');
+            Route::get('/allPermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
+            Route::get('/addRoleUser', 'DecentralizationController@addRoleOfUser')->name('addrolesuser');
+            Route::post('/addRoleUser', 'DecentralizationController@createRoleOfUser');
         });
 
         //USERS
         Route::group(['prefix' => 'user'], function () {
                 Route::get('/','UserController@alluser')->name('alluser');
                 Route::get('/adduser','UserController@adduser')->name('adduser');
-                Route::post('/adduser', 'UserController@create');
+                Route::post('/adduser', 'UserController@createPermissionRoles');
                 Route::get('/destroyuser/{id}', 'UserController@destroy')->name('destroyuser');
         });
 
