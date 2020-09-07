@@ -3,7 +3,15 @@
 @foreach ($errors->all() as $error)
 <div class='alert alert-danger'>{{$error}}</div>
 @endforeach
-{{-- Add Roles of User --}}
+{{-- edit role --}}
+<?php
+    $messageEditRoleCorrect = Session::get('editRoleCorrect');
+    if($messageEditRoleCorrect){
+        echo "<div class='alert alert-success'>".$messageEditRoleCorrect."</div>";
+        session::put('editRoleCorrect',Null);
+    }
+?>
+{{--add Roles of User --}}
 <?php
     $messageAddRolesUserError = Session::get('RoleOfUserError');
     if($messageAddRolesUserError){
@@ -18,18 +26,18 @@
         session::put('RoleOfUserCorrect',Null);
     }
 ?>
-{{-- AddPermissionToRole --}}
+{{--add PermissionToRole --}}
 <?php
-    $messageAddCateEr = Session::get('AddRoleToPermissionError');
-    if($messageAddCateEr){
-        echo "<div class='alert alert-danger'>".$messageAddCateEr."</div>";
+    $messageAddRolePermissionEr = Session::get('AddRoleToPermissionError');
+    if($messageAddRolePermissionEr){
+        echo "<div class='alert alert-danger'>".$messageAddRolePermissionEr."</div>";
         session::put('AddRoleToPermissionError',Null);
     }
 ?>
 <?php
-    $messageAddDecCr = Session::get('AddRoleToPermissionCorrect');
-    if($messageAddDecCr){
-        echo "<div class='alert alert-success'>".$messageAddDecCr."</div>";
+    $messageAddRolePermissionCr = Session::get('AddRoleToPermissionCorrect');
+    if($messageAddRolePermissionCr){
+        echo "<div class='alert alert-success'>".$messageAddRolePermissionCr."</div>";
         session::put('AddRoleToPermissionCorrect',Null);
     }
 ?>

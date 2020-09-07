@@ -399,6 +399,7 @@
     @yield('editProduct')
     @yield('editNews')
     @yield('editSlider')
+    @yield('editRole')
 
     @yield('UserContent')
 

@@ -69,9 +69,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
         //ROLES
         Route::group(['prefix' => 'role'], function () {
                 Route::get('/','RoleController@allrole')->name('allrole');
-                Route::get('/addrole','RoleController@addrole')->name('addrole');
-                Route::post('/addrole','RoleController@create');
-                Route::get('/detroyrole/{id}','RoleController@detroy')->name('detroyrole');
+                Route::get('/addRole','RoleController@addrole')->name('addrole');
+                Route::post('/addRole','RoleController@create');
+                Route::get('/editRole/{id}', 'RoleController@editrole')->name('editrole');
+                Route::post('/editRole/{id}', 'RoleController@update');
+                Route::get('/detroyRole/{id}','RoleController@detroy')->name('detroyrole');
         });
 
         //PERMISSIONS

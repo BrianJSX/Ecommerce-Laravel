@@ -46,7 +46,7 @@
                           <td>{{$role->id}}</td>
                           <td>{{$role->name}}</td>
                           <td>
-                            <a class="btn btn-primary btn-info-category" href="">
+                            <a class="btn btn-primary btn-info-category" href="{{route('editrole',$role->id)}}">
                                   <i class="mdi mdi-table-edit"></i>
                             </a>
                             {{-- <button type="button" class="btn btn-success btn-info-product" data-url="">
