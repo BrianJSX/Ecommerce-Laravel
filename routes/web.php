@@ -106,7 +106,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
         Route::group(['prefix' => 'user'], function () {
                 Route::get('/alluser','UserController@alluser')->name('alluser');
                 Route::get('/adduser','UserController@adduser')->name('adduser');
-                Route::post('/adduser', 'UserController@createPermissionRoles');
+                Route::post('/adduser', 'UserController@create');
                 Route::get('/edituser/{id}', 'UserController@editUser')->name('edituser');
                 Route::post('/edituser/{id}', 'UserController@update');
                 Route::get('/destroyuser/{id}', 'UserController@destroy')->name('destroyuser');

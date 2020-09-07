@@ -31,12 +31,16 @@
               <h4>Xin Chào!! </h4>
               <h6 class="font-weight-light">Chúc bạn có một ngày tốt lành</h6>
             <form class="pt-3" method="POST">
-             
+
               <?php
-                $message = Session::get('message');
-                if($message){
-                  echo "<div class='alert alert-danger' style='font-size:13px'>".$message."</div>";
-                  Session::put('message',Null);
+                $messageAdmin = Session::get('messageAdmin');
+                $messageGuest = Session::get('messageGuest');
+                if($messageAdmin){
+                    echo "<div class='alert alert-danger' style='font-size:13px'>".$messageAdmin."</div>";
+                    Session::put('messageAdmin',Null);
+                }else if($messageGuest){
+                    echo "<div class='alert alert-danger' style='font-size:13px'>".$messageGuest."</div>";
+                    Session::put('messageGuest',Null);
                 }
               ?>
                 <div class="form-group">
@@ -59,7 +63,7 @@
                         <i class="mdi mdi-lock-outline text-primary"></i>
                       </span>
                     </div>
-                    <input type="password" name="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password">                        
+                    <input type="password" name="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" placeholder="Password">
                   </div>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">

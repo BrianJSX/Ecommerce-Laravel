@@ -48,7 +48,6 @@ class UserController extends Controller
         $user->name = $request->user_name;
         $user->email = $request->user_email;
         $user->phone = $request->user_phone;
-        $user->password = bcrypt($request->user_password);
         $user->save();
         Session::put('EditUserCorrect', 'Sửa thông tin User thành công');
         return back();
