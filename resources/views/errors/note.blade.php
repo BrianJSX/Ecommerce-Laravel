@@ -10,6 +10,11 @@
         echo "<div class='alert alert-success'>".$editUserCorrect."</div>";
         session::put('EditUserCorrect', Null);
     }
+    $editUserError  = Session::get('EditUserError');
+    if($editUserError){
+        echo "<div class='alert alert-success'>".$editUserError."</div>";
+        session::put('EditUserError', Null);
+    }
 ?>
 {{-- remove Role of user  --}}
 <?php

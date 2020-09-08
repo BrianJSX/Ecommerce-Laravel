@@ -21,7 +21,7 @@
             <label for="exampleInputName1">Phone *</label>
             <input value="{{$user->phone}}" type="text" name="user_phone" class="form-control" id="exampleInputName1" placeholder="Phone Number" required>
           </div>
-          {{-- <div class="form-group">
+          <div class="form-group">
             <label for="exampleInputName1">New Password</label>
             <input type="password" name="user_password" class="form-control ide" id="" placeholder="*******" >
           </div>
@@ -31,7 +31,7 @@
           </div>
           <div class="m-3">
             <input type="checkbox" onclick="showpass()"> Show Password
-          </div> --}}
+          </div>
           <div class="row">
               <span class="m-1">
                     <button type="submit" class="btn btn-primary mr-2">Sửa User</button>

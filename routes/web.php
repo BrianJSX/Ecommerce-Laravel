@@ -205,7 +205,6 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
                 //xóa
                         Route::get('destroy/{id}','SliderController@destroy')->name('destroyslider');
                         // Route::get('showcategorydesc/{id}','CategoryProduct@showdesc')->name('showdesc');
-
                 });
         });
     });

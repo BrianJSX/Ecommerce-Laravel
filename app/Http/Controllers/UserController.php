@@ -42,8 +42,21 @@ class UserController extends Controller
         }
     }
     public function update(EditUserRequest $request,$id){
-        // $password = $request->user_password;
-        // $rpassword=  $request->user_rpassword;
+        $password = $request->user_password;
+        $rpassword=  $request->user_rpassword;
+        if($password && $rpassword && $password == $rpassword){
+            $user = User::find($id);
+            $user->name = $request->user_name;
+            $user->email = $request->user_email;
+            $user->phone = $request->user_phone;
+            $user->password = bcrypt($password);
+            $user->save();
+            Session::put('EditUserCorrect', 'Sửa thông tin User thành công');
+            return back();
+        }else if($password && $rpassword && $password != $rpassword){
+            Session::put('EditUserError', 'Password không khớp');
+            return back();
+        }
         $user = User::find($id);
         $user->name = $request->user_name;
         $user->email = $request->user_email;
