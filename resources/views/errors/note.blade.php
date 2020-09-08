@@ -12,7 +12,7 @@
     }
     $editUserError  = Session::get('EditUserError');
     if($editUserError){
-        echo "<div class='alert alert-success'>".$editUserError."</div>";
+        echo "<div class='alert alert-danger'>".$editUserError."</div>";
         session::put('EditUserError', Null);
     }
 ?>

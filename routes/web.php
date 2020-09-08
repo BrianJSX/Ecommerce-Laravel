@@ -54,6 +54,10 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin','AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin','AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
+Route::group(['prefix' => 'staff'], function () {
+    Route::get('/','StaffController@login');
+});
+
 Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:Super_admin|admin']], function () {
         //TO DO something
         Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
