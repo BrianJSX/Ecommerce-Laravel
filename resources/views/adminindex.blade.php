@@ -181,7 +181,7 @@
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-
+            {{-- @hasanyrole('Super_admin|admin|poster|staff') --}}
             {{-- DASHBOARD --}}
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('dashboard') }}">
@@ -189,48 +189,103 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
+                {{-- @unlessrole('staff') --}}
+                {{-- CATEGORY --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
+                    aria-controls="ui-basic">
+                        <i class="mdi mdi-circle-outline menu-icon"></i>
+                        <span class="menu-title">Danh mục sản phẩm</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="product">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addcategory')}}">Thêm</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('allcategory')}}">Tất cả danh mục</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- BRAND --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#brands" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="mdi mdi-equal-box menu-icon"></i>
+                        <span class="menu-title">Hiệu sản phẩm</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="brands">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addbrand')}}">Thêm</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('allbrand')}}">Tất cả danh mục</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- PRODUCT --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="auth">
+                        <i class="mdi mdi-fridge menu-icon"></i>
+                        <span class="menu-title">Sản Phẩm</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="products">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addproduct')}}">Thêm</a></li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('allproduct')}}">Tất cả sản phẩm</a></li>
+                    </ul>
+                    </div>
+                </li>
+                {{-- @endunlessrole
+            @endhasanyrole --}}
 
-            {{-- CATEGORY --}}
+            {{-- @hasanyrole('Super_admin|admin|writer') --}}
+            {{-- SLIDER --}}
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
-                   aria-controls="ui-basic">
-                    <i class="mdi mdi-circle-outline menu-icon"></i>
-                    <span class="menu-title">Danh mục sản phẩm</span>
+                <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"
+                    aria-controls="ui-basic">
+                    <i class="mdi mdi-code-string menu-icon"></i>
+                    <span class="menu-title">Slider</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="product">
+                <div class="collapse" id="sliders">
                     <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('addcategory')}}">Thêm</a>
-                      </li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('addslider')}}">Thêm</a>
+                        </li>
                     </ul>
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('allcategory')}}">Tất cả danh mục</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('allslider')}}">Tất cả slider</a>
                         </li>
                     </ul>
                 </div>
             </li>
-
-            {{-- BRAND --}}
+            {{-- NEWS --}}
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#brands" aria-expanded="false"
-                 aria-controls="ui-basic">
-                  <i class="mdi mdi-equal-box menu-icon"></i>
-                  <span class="menu-title">Hiệu sản phẩm</span>
-                  <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="brands">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route('addbrand')}}">Thêm</a>
-                    </li>
-                  </ul>
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('allbrand')}}">Tất cả danh mục</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
+                <a class="nav-link" data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="auth">
+                    <i class="mdi mdi-newspaper menu-icon"></i>
+                    <span class="menu-title">News</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="news">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('addnews')}}">Thêm</a></li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('allnews')}}">Tất cả News</a></li>
+                    </ul>
+                </div>
+            </li>
+            {{-- @endhasanyrole --}}
 
-
+            {{-- @role('Super_admin') --}}
             {{-- ROLES --}}
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false"
@@ -248,7 +303,6 @@
                 </ul>
               </div>
             </li>
-
             {{-- PERMISSION --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#permissions" aria-expanded="false"
@@ -268,7 +322,6 @@
                     </ul>
                 </div>
             </li>
-
             {{-- decentralization --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#decentralizations" aria-expanded="false"
@@ -281,93 +334,39 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission trong Roles</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Xóa Permission trong Roles</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Permissions trong Roles</a>
                         </li>
                     </ul>
 
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm Roles cho Users</a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Xóa Roles trong Users</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Roles trong Users</a>
                         </li>
                     </ul>
                 </div>
             </li>
-
-            {{-- SLIDER --}}
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"
-                aria-controls="ui-basic">
-                <i class="mdi mdi-code-string menu-icon"></i>
-                  <span class="menu-title">Slider</span>
-                  <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="sliders">
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('addslider')}}">Thêm</a>
-                      </li>
-                  </ul>
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('allslider')}}">Tất cả slider</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-
-
             {{-- USER --}}
             <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
-                aria-controls="ui-basic">
-                <i class="mdi mdi-comment-account menu-icon"></i>
-                  <span class="menu-title">Users</span>
-                  <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="users">
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
-                      </li>
-                  </ul>
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
-                      </li>
-                  </ul>
-              </div>
-          </li>
-
-            {{-- PRODUCT --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="auth">
-                    <i class="mdi mdi-fridge menu-icon"></i>
-                    <span class="menu-title">Sản Phẩm</span>
+                <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
+                    aria-controls="ui-basic">
+                    <i class="mdi mdi-comment-account menu-icon"></i>
+                    <span class="menu-title">Users</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="products">
+                <div class="collapse" id="users">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('addproduct')}}">Thêm</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
+                        </li>
                     </ul>
                     <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('allproduct')}}">Tất cả sản phẩm</a></li>
-                  </ul>
+                        <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
+                        </li>
+                    </ul>
                 </div>
             </li>
+            {{-- @endrole --}}
 
-            {{-- NEWS --}}
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="auth">
-                  <i class="mdi mdi-newspaper menu-icon"></i>
-                  <span class="menu-title">News</span>
-                  <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="news">
-                  <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"><a class="nav-link" href="{{route('addnews')}}">Thêm</a></li>
-                  </ul>
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route('allnews')}}">Tất cả News</a></li>
-                </ul>
-              </div>
-            </li>
         </ul>
     </nav>
     <!-- partial -->
@@ -405,7 +404,6 @@
     @yield('editRolePermission')
     @yield('editRoleUser')
     @yield('EditUser')
-
     @yield('UserContent')
 
 

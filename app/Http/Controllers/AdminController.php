@@ -49,17 +49,16 @@ class AdminController extends Controller
         $request = $request->only('email', 'password');        // return $data;
         if (Auth::attempt($request)) {
             $users = Auth::user();
-            $checkrole = $users->hasRole('Super_admin');
-            if($checkrole){
+            $checkrole = $users->hasRole(['Super_admin', 'admin', 'poster', 'staff', 'writer']);
+            if ($checkrole) {
                 session::put('admin_id',$users->id);
                 session::put('admin_name',$users->name);
                 return Redirect::to('admin/dashboard');
-            }else{
-                session::put('admin_id', null);
-                session::put('admin_name',null);
-                session::put('messageGuest','Bạn không có quyền truy cập');
-                return Redirect::to('admin');
             }
+            session::put('admin_id', null);
+            session::put('admin_name',null);
+            session::put('messageGuest','Bạn không có quyền truy cập');
+            return Redirect::to('admin');
         }
             session::put('messageAdmin','Tài khoản hoặc mật khẩu không chính xác');
             return Redirect::to('admin')->withInput();

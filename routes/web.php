@@ -19,6 +19,7 @@ use App\Models\CategoryProductModel;
 use App\Http\Controllers\BrandProduct;
 use App\Models\BrandProductModel;
 use App\Http\Controllers\Product;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeControler@index');
 Route::get('/home', 'HomeControler@index')->name('home');
@@ -58,7 +59,7 @@ Route::group(['prefix' => 'staff'], function () {
     Route::get('/','StaffController@login');
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middleware' => ['role:Super_admin|admin']], function () {
+Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], function () {
         //TO DO something
         Route::get('admin/logout','AdminController@logoutadmin')->name('logout');
         Route::get('/search','AdminController@searchproduct')->name('searchproduct');
@@ -66,54 +67,55 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard','middlew
         //DASH BOARD
         Route::group(['prefix' => 'dashboard'], function () {
                 Route::get('/','AdminController@dashboard')->name('dashboard');
-                Route::get('processed/{id}','AdminController@processed')->name('dashboardprocessed');
-                Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
+                Route::group(['middleware' => 'permission: order_processing'], function () {
+                    Route::get('processed/{id}','AdminController@processed')->name('dashboardprocessed');
+                    Route::get('unprocessed/{id}','AdminController@unprocessed')->name('dashboardunprocessed');
+                });
         });
 
         //ROLES
         Route::group(['prefix' => 'role'], function () {
-                Route::get('/','RoleController@allrole')->name('allrole');
-                Route::get('/addRole','RoleController@addrole')->name('addrole');
-                Route::post('/addRole','RoleController@create');
-                Route::get('/editRole/{id}', 'RoleController@editrole')->name('editrole');
-                Route::post('/editRole/{id}', 'RoleController@update');
-                Route::get('/detroyRole/{id}','RoleController@detroy')->name('detroyrole');
+            Route::get('/view_role','RoleController@allrole')->name('allrole');
+            Route::get('/create_role','RoleController@addrole')->name('addrole');
+            Route::post('/create_role','RoleController@create');
+            Route::get('/update_role/{id}', 'RoleController@editrole')->name('editrole');
+            Route::post('/update_role/{id}', 'RoleController@update');
+            Route::get('/delete_role/{id}','RoleController@detroy')->name('detroyrole');
         });
 
         //PERMISSIONS
         Route::group(['prefix' => 'permission'], function () {
-                Route::get('/allPermission','PermissionController@allpermission')->name('allpermission');
-                Route::get('/addPermission','PermissionController@addpermission')->name('addpermission');
-                Route::post('/addPermission','PermissionController@create');
-                Route::get('/editPermission/{id}', 'PermissionController@editpermission')->name('editpermission');
-                Route::post('/editPermission/{id}', 'PermissionController@update');
-                Route::get('/detroyPermission/{id}','PermissionController@destroy')->name('destroypermission');
+                Route::get('/view_permission','PermissionController@allpermission')->name('allpermission');
+                Route::get('/create_permission','PermissionController@addpermission')->name('addpermission');
+                Route::post('/create_permission','PermissionController@create');
+                Route::get('/update_permission/{id}', 'PermissionController@editpermission')->name('editpermission');
+                Route::post('/update_permission/{id}', 'PermissionController@update');
+                Route::get('/delete_permision/{id}','PermissionController@destroy')->name('destroypermission');
         });
 
         //Decentralization
         Route::group(['prefix' => 'decentralization'], function () {
-            Route::get('/addDecentralization','DecentralizationController@adddecentralization')->name('adddecentralization');
-            Route::post('/addDecentralization' , 'DecentralizationController@createPermissionRoles');
-            Route::get('/allPermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
-            Route::get('/allRoleUser', 'DecentralizationController@allRoleOfUser')->name('showroleofuser');
-            Route::get('/addRoleUser', 'DecentralizationController@addRoleOfUser')->name('addrolesuser');
-            Route::post('/addRoleUser', 'DecentralizationController@createRoleOfUser');
-            Route::get('/editRolePermission/{id}', 'DecentralizationController@editRolePermission')->name('editrolepermission');
-            Route::post('/editRolePermission/{id}', 'DecentralizationController@revokedPermissionRole');
-            Route::get('/editRoleUser/{id}', 'DecentralizationController@editRoleUser')->name('editroleuser');
-            Route::post('/editRoleUser/{id}', 'DecentralizationController@revokedRoleUser');
+            Route::get('/create_PremissionRole','DecentralizationController@adddecentralization')->name('adddecentralization');
+            Route::post('/create_PermissionRole' , 'DecentralizationController@createPermissionRoles');
+            Route::get('/view_PermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
+            Route::get('/detele_PermissionRole/{id}', 'DecentralizationController@editRolePermission')->name('editrolepermission');
+            Route::post('/detele_PermissionRole/{id}', 'DecentralizationController@revokedPermissionRole');
 
-
+            Route::get('/view_UserRole', 'DecentralizationController@allRoleOfUser')->name('showroleofuser');
+            Route::get('/create_UserRole', 'DecentralizationController@addRoleOfUser')->name('addrolesuser');
+            Route::post('/create_UserRole', 'DecentralizationController@createRoleOfUser');
+            Route::get('/detele_UserRole/{id}', 'DecentralizationController@editRoleUser')->name('editroleuser');
+            Route::post('/detele_UserRole/{id}', 'DecentralizationController@revokedRoleUser');
         });
 
         //USERS
-        Route::group(['prefix' => 'user'], function () {
-                Route::get('/alluser','UserController@alluser')->name('alluser');
-                Route::get('/adduser','UserController@adduser')->name('adduser');
-                Route::post('/adduser', 'UserController@create');
-                Route::get('/edituser/{id}', 'UserController@editUser')->name('edituser');
-                Route::post('/edituser/{id}', 'UserController@update');
-                Route::get('/destroyuser/{id}', 'UserController@destroy')->name('destroyuser');
+        Route::group(['prefix' => 'user',  'middleware' => ['role:Super_admin']], function () {
+                Route::get('/view_user','UserController@alluser')->name('alluser');
+                Route::get('/create_user','UserController@adduser')->name('adduser');
+                Route::post('/create_user', 'UserController@create');
+                Route::get('/update_user/{id}', 'UserController@editUser')->name('edituser');
+                Route::post('/update_user/{id}', 'UserController@update');
+                Route::get('/detele_user/{id}', 'UserController@destroy')->name('destroyuser');
         });
 
         //CATEGORYS

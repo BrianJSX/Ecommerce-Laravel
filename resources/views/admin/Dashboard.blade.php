@@ -244,7 +244,7 @@
                 <h1>$ 28835</h1>
                 <h4>Gross sales over the years</h4>
                 <p class="text-muted">Today, many people rely on computers to do homework, work, and create or store useful information. Therefore, it is important </p>
-                <div id="total-sales-chart-legend"></div>                  
+                <div id="total-sales-chart-legend"></div>
               </div>
               <canvas id="total-sales-chart"></canvas>
             </div>
@@ -259,10 +259,10 @@
                   <table id="recent-purchases-listing" class="table">
                     <thead>
                       <tr>
-                          <th>ID ĐƠN HÀNG</th>
+                          <th>ID</th>
                           <th>Họ tên người đặt</th>
                           <th>Số điện thoại</th>
-                          <th>Email</th>
+                          <th >Email</th>
                           <th>Tổng đơn</th>
                           <th>Ngày đặt</th>
                           <th>Tình trạng</th>
@@ -272,7 +272,7 @@
                         @if ($countorder == 0)
                           <tr>
                             <td>Không có đơn hàng nào!!!</td>
-                          </tr> 
+                          </tr>
                         @else
                           @foreach ($orderdetail as $order)
                             <tr>
@@ -280,22 +280,22 @@
                               <td>{{$order->order_name}}</td>
                               <td>{{$order->order_phone}}</td>
                               <td>{{$order->order_email}}</td>
-                              <td>{{$order->order_total}} Vnđ</td>
+                              <td>{{number_format($order->order_total)}}</td>
                               <td>{{$order->created_at}}</td>
                               <td>
-                                <?php 
+                                <?php
                                 if ($order->order_status == 1) {
                                 ?>
                                     <a href="{{route('dashboardunprocessed',$order->order_id)}}"><span class='badge badge-success'>Đã xử lý</span></a>
                                 <?php
                                  }else{
-                                ?>  
+                                ?>
                                  <a href="{{route('dashboardprocessed',$order->order_id)}}"><span class='badge badge-danger'>Chưa xử lý</span></a>
                                 <?php
                                  }
                                 ?>
                               </td>
-                            </tr> 
+                            </tr>
                           @endforeach
                         @endif
                     </tbody>
@@ -314,3 +314,4 @@
         </div>
       </div>
 @endsection
+
