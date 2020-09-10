@@ -53,99 +53,6 @@
                 </ul>
 </form>
 <ul class="navbar-nav navbar-nav-right">
-    {{-- <li class="nav-item dropdown mr-1">
-      <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-        <i class="mdi mdi-message-text mx-0"></i>
-        <span class="count"></span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-        <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-              <img src="{{asset('/public/backend/images/faces/face4.jpg')}}" alt="image" class="profile-pic">
-          </div>
-          <div class="item-content flex-grow">
-            <h6 class="ellipsis font-weight-normal">David Grey
-            </h6>
-            <p class="font-weight-light small-text text-muted mb-0">
-              The meeting is cancelled
-            </p>
-          </div>
-        </a>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-              <img src="{{asset('./public/backend/images/faces/face2.jpg')}}" alt="image" class="profile-pic">
-          </div>
-          <div class="item-content flex-grow">
-            <h6 class="ellipsis font-weight-normal">Tim Cook
-            </h6>
-            <p class="font-weight-light small-text text-muted mb-0">
-              New product launch
-            </p>
-          </div>
-        </a>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-              <img src="{{asset('./public/backend/images/faces/face3.jpg')}}" alt="image" class="profile-pic">
-          </div>
-          <div class="item-content flex-grow">
-            <h6 class="ellipsis font-weight-normal"> Johnson
-            </h6>
-            <p class="font-weight-light small-text text-muted mb-0">
-              Upcoming board meeting
-            </p>
-          </div>
-        </a>
-      </div>
-    </li>
-    <li class="nav-item dropdown mr-4">
-      <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
-        <i class="mdi mdi-bell mx-0"></i>
-        <span class="count"></span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-        <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-            <div class="item-icon bg-success">
-              <i class="mdi mdi-information mx-0"></i>
-            </div>
-          </div>
-          <div class="item-content">
-            <h6 class="font-weight-normal">Application Error</h6>
-            <p class="font-weight-light small-text mb-0 text-muted">
-              Just now
-            </p>
-          </div>
-        </a>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-            <div class="item-icon bg-warning">
-              <i class="mdi mdi-settings mx-0"></i>
-            </div>
-          </div>
-          <div class="item-content">
-            <h6 class="font-weight-normal">Settings</h6>
-            <p class="font-weight-light small-text mb-0 text-muted">
-              Private message
-            </p>
-          </div>
-        </a>
-        <a class="dropdown-item">
-          <div class="item-thumbnail">
-            <div class="item-icon bg-info">
-              <i class="mdi mdi-account-box mx-0"></i>
-            </div>
-          </div>
-          <div class="item-content">
-            <h6 class="font-weight-normal">New user registration</h6>
-            <p class="font-weight-light small-text mb-0 text-muted">
-              2 days ago
-            </p>
-          </div>
-        </a>
-      </div>
-    </li> --}}
     <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
             <img src="{{asset('public/backend/images/faces/face5.jpg')}}" alt="profile"/>
@@ -170,26 +77,25 @@
         </div>
     </li>
 </ul>
-<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-    <span class="mdi mdi-menu"></span>
-</button>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+    </button>
 </div>
 </nav>
-
 <!-- partial -->
 <div class="container-fluid page-body-wrapper">
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-            {{-- @hasanyrole('Super_admin|admin|poster|staff') --}}
-            {{-- DASHBOARD --}}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('dashboard') }}">
-                    <i class="mdi mdi-home menu-icon"></i>
-                    <span class="menu-title">Dashboard</span>
-                </a>
-            </li>
-                {{-- @unlessrole('staff') --}}
+            @hasanyrole('super_admin|admin|poster|staff')
+                {{-- DASHBOARD --}}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">
+                        <i class="mdi mdi-home menu-icon"></i>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                @unlessrole('staff')
                 {{-- CATEGORY --}}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
@@ -244,10 +150,10 @@
                     </ul>
                     </div>
                 </li>
-                {{-- @endunlessrole
-            @endhasanyrole --}}
+                @endunlessrole
+            @endhasanyrole
 
-            {{-- @hasanyrole('Super_admin|admin|writer') --}}
+            @hasanyrole('super_admin|admin|writer')
             {{-- SLIDER --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"
@@ -283,9 +189,9 @@
                     </ul>
                 </div>
             </li>
-            {{-- @endhasanyrole --}}
+            @endhasanyrole
 
-            {{-- @role('Super_admin') --}}
+            @role('super_admin')
             {{-- ROLES --}}
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false"
@@ -365,55 +271,45 @@
                     </ul>
                 </div>
             </li>
-            {{-- @endrole --}}
-
+            @endrole
         </ul>
     </nav>
     <!-- partial -->
     <div class="main-panel">
-    @yield('DashboardContent')
-    @yield('SearchProduct')
+        @yield('DashboardContent')
+        @yield('SearchProduct')
 
-    @yield('AddCategoryContent')
-    @yield('AddBrandContent')
-    @yield('AddProductContent')
-    @yield('AddNewsContent')
-    @yield('AddSliderContent')
-    @yield('AddRoleContent')
-    @yield('AddPermissionContent')
-    @yield('AddUserContent')
-    @yield('AddRolesUserContent')
+        @yield('AddCategoryContent')
+        @yield('AddBrandContent')
+        @yield('AddProductContent')
+        @yield('AddNewsContent')
+        @yield('AddSliderContent')
+        @yield('AddRoleContent')
+        @yield('AddPermissionContent')
+        @yield('AddUserContent')
+        @yield('AddRolesUserContent')
 
-    @yield('AllCategoryContent')
-    @yield('AllSliderContent')
-    @yield('AllNewsContent')
-    @yield('allBrand')
-    @yield('allProduct')
-    @yield('AllRoleContent')
-    @yield('AllPermissionContent')
-    @yield('AllPermissionRoleContent')
-    @yield('AllRoleUserContent')
+        @yield('AllCategoryContent')
+        @yield('AllSliderContent')
+        @yield('AllNewsContent')
+        @yield('allBrand')
+        @yield('allProduct')
+        @yield('AllRoleContent')
+        @yield('AllPermissionContent')
+        @yield('AllPermissionRoleContent')
+        @yield('AllRoleUserContent')
 
-    @yield('editCategory')
-    @yield('editBrand')
-    @yield('editProduct')
-    @yield('editNews')
-    @yield('editSlider')
-    @yield('editRole')
-    @yield('editPermission')
-    @yield('editRolePermission')
-    @yield('editRoleUser')
-    @yield('EditUser')
-    @yield('UserContent')
-
-
-
-
-
-
-
-
-
+        @yield('editCategory')
+        @yield('editBrand')
+        @yield('editProduct')
+        @yield('editNews')
+        @yield('editSlider')
+        @yield('editRole')
+        @yield('editPermission')
+        @yield('editRolePermission')
+        @yield('editRoleUser')
+        @yield('EditUser')
+        @yield('UserContent')
     <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -430,10 +326,6 @@
 </div>
 <!-- page-body-wrapper ends -->
 </div>
-<!-- container-scroller -->
-
-<!-- plugins:js -->
-
 <script src="{{ URL::asset('./public/backend/vendors/base/vendor.bundle.base.js')}}"></script>
 <!-- endinject -->
 <!-- Plugin js for this page-->
@@ -456,10 +348,8 @@
 <script src="{{ URL::asset('./public/backend/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{ URL::asset('./resources/js/jquery.min.js')}}"></script>
 <script src="{{ URL::asset('./resources/js/ajax.js')}}"></script>
-
 <script>
     $(document).ready(function () {
-
         $("#checkall").click(function () {
             $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
         });
@@ -482,8 +372,6 @@
         // });
     });
 </script>
-<!-- End custom js for this page-->
 </body>
-
 </html>
 

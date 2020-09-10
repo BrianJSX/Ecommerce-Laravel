@@ -48,7 +48,7 @@ class AdminController extends Controller
         $request = $request->only('email', 'password');        // return $data;
         if (Auth::attempt($request)) {
             $users = Auth::user();
-            $checkrole = $users->hasRole(['Super_admin', 'admin', 'poster', 'staff', 'writer']);
+            $checkrole = $users->hasRole(['super_admin', 'admin', 'poster', 'staff', 'writer']);
             if ($checkrole) {
                 session::put('admin_id',$users->id);
                 session::put('admin_name',$users->name);

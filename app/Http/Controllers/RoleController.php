@@ -25,7 +25,6 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->role_name]);
         return back();
     }
-
     public function update(EditRoleRequest $request, $id){
         $role_name = $request->role_name;
         $role = RoleModel::find($id);
@@ -34,7 +33,6 @@ class RoleController extends Controller
         Session::put('editRoleCorrect','Sửa tên role thành công');
         return back();
     }
-
     public function editrole($id){
         $roles = Role::where('id', $id)->count();
         if($roles > 0){
@@ -43,7 +41,6 @@ class RoleController extends Controller
         }
         return redirect('admin/role');
     }
-
     public function detroy($id){
         $detroy = RoleModel::destroy($id);
     }
