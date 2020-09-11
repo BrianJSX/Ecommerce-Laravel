@@ -87,7 +87,7 @@
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-            @hasanyrole('super_admin|admin|poster|staff')
+            @hasanyrole('super_admin|admin|poster|writer')
                 {{-- DASHBOARD --}}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard') }}">
@@ -95,7 +95,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-                @unlessrole('staff')
+                @unlessrole('writer')
                 {{-- CATEGORY --}}
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#product" aria-expanded="false"
@@ -150,29 +150,29 @@
                     </ul>
                     </div>
                 </li>
+                 {{-- SLIDER --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="mdi mdi-code-string menu-icon"></i>
+                        <span class="menu-title">Slider</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="sliders">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addslider')}}">Thêm</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('allslider')}}">Tất cả slider</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 @endunlessrole
             @endhasanyrole
 
             @hasanyrole('super_admin|admin|writer')
-            {{-- SLIDER --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#sliders" aria-expanded="false"
-                    aria-controls="ui-basic">
-                    <i class="mdi mdi-code-string menu-icon"></i>
-                    <span class="menu-title">Slider</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="sliders">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('addslider')}}">Thêm</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('allslider')}}">Tất cả slider</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             {{-- NEWS --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#news" aria-expanded="false" aria-controls="auth">
@@ -261,6 +261,25 @@
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="users">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- TASK --}}
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#tasks" aria-expanded="false"
+                    aria-controls="ui-basic">
+                    <i class="mdi mdi-comment-account menu-icon"></i>
+                    <span class="menu-title">Tasks</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="tasks">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
                         </li>

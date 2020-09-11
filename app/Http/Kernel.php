@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'CheckAdminStaff' => \App\Http\Middleware\CheckAdminStaff::class,
         'CheckCart' => \App\Http\Middleware\CheckCart::class,
         'checkidadmin' => \App\Http\Middleware\checkidadmin::class,
         'checklogindashboard' => \App\Http\Middleware\checklogindashboard::class,

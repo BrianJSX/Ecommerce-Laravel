@@ -37,16 +37,19 @@ Route::group(['prefix' => 'cart'], function () {
 // ADMIN
 Route::get('admin', 'AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin', 'AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
+
 Route::group(['prefix' => 'staff'], function () {
-    Route::get('/', 'StaffController@login');
+    Route::get('/', 'StaffController@staff')->name('staff')->middleware('CheckAdminStaff');
+    Route::post('/', "StaffController@login");
 });
+
 Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], function () {
     //TO DO something
-    Route::get('admin/logout', 'AdminController@logoutadmin')->name('logout');
-    Route::get('search', 'AdminController@searchproduct')->name('searchproduct');
+    Route::get('logout', 'AdminController@logoutadmin')->name('logout');
+
 
     //DASH BOARD
-    Route::group(['prefix' => 'dashboard', 'middleware' => 'role: super_admin|admin|poster|writer'], function () {
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'role:super_admin|admin|poster|writer'], function () {
         Route::get('/', 'AdminController@dashboard')->name('dashboard');
         Route::group(['middleware' => 'role:super_admin|admin'], function () {
             Route::get('processed/{id}', 'AdminController@processed')->name('dashboardprocessed');
@@ -105,6 +108,9 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
     //-------------------------------------------POSTER----------------------------------------//
 
     Route::group(['middleware' => 'role:poster|super_admin|admin'], function () {
+
+        //SEARCH PRODUCT
+        Route::get('search', 'AdminController@searchproduct')->name('searchproduct');
         //CATEGORYS
         Route::group(['prefix' => 'category'], function () {
             Route::get('view_category', 'CategoryProduct@allcategory')->name('allcategory');
