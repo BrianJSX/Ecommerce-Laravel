@@ -35,7 +35,7 @@ class AdminController extends Controller
         $data['countproductadmin'] = $product;
         $data['countcategoryadmin'] = $category;
         $data['countbrandadmin'] = $brand;
-        $data['orderdetail'] = OrderModel::paginate(15);
+        $data['orderdetail'] = OrderModel::all();
         $data['countorder'] = $order;
         $data['ordertotal'] = $totalorder;
         $data['ordertotalprocessed'] = $totalorderprocessed;

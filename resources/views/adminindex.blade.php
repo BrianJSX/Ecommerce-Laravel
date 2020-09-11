@@ -46,7 +46,7 @@
                                     <i class="mdi mdi-magnify"></i>
                                 </button>
                             </div>
-                            <input name="search_product" type="text" class="form-control" placeholder="Search now"
+                            <input name="search_product" type="text" class="form-control" placeholder="Nhập để tìm sản phẩm"
                                    aria-label="search" aria-describedby="search">
                         </div>
                     </li>
@@ -129,7 +129,7 @@
                             </li>
                         </ul>
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"><a class="nav-link" href="{{route('allbrand')}}">Tất cả danh mục</a>
+                            <li class="nav-item"><a class="nav-link" href="{{route('allbrand')}}">Tất cả hiệu sản phẩm</a>
                             </li>
                         </ul>
                     </div>

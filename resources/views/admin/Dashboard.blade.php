@@ -265,7 +265,9 @@
                           <th >Email</th>
                           <th>Tổng đơn</th>
                           <th>Ngày đặt</th>
+                          @hasrole('super_admin|admin')
                           <th>Tình trạng</th>
+                          @endhasrole
                       </tr>
                     </thead>
                     <tbody>
@@ -275,26 +277,28 @@
                           </tr>
                         @else
                           @foreach ($orderdetail as $order)
-                            <tr>
+                            <tr @if($order->order_status == 1) style="background-color:#89e289" @else style="background-color:#e67474"  @endif>
                               <td>{{$order->order_id}}</td>
                               <td>{{$order->order_name}}</td>
                               <td>{{$order->order_phone}}</td>
                               <td>{{$order->order_email}}</td>
                               <td>{{number_format($order->order_total)}}</td>
                               <td>{{$order->created_at}}</td>
+                              @hasrole('super_admin|admin')
                               <td>
                                 <?php
                                 if ($order->order_status == 1) {
                                 ?>
-                                    <a href="{{route('dashboardunprocessed',$order->order_id)}}"><span class='badge badge-success'>Đã xử lý</span></a>
+                                    <a href="{{route('dashboardunprocessed',$order->order_id)}}" title="Ấn để hoàn tác"><span class='badge badge-danger'>Ấn hoàn tác</span></a>
                                 <?php
                                  }else{
                                 ?>
-                                 <a href="{{route('dashboardprocessed',$order->order_id)}}"><span class='badge badge-danger'>Chưa xử lý</span></a>
+                                 <a href="{{route('dashboardprocessed',$order->order_id)}}" title="Ấn để xử lý"><span class='badge badge-success'>Ấn để xử lý</span></a>
                                 <?php
                                  }
                                 ?>
                               </td>
+                              @endhasrole
                             </tr>
                           @endforeach
                         @endif
@@ -305,7 +309,7 @@
               <div class="col-sm-12 col-md-7">
                 <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
                   <ul class="pagination">
-                      {{ $orderdetail->links() }}
+                      {{-- {{ $orderdetail->links() }} --}}
                   </ul>
                 </div>
               </div>
