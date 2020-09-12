@@ -14,10 +14,10 @@ class CreateUserTaskTable extends Migration
     public function up()
     {
         Schema::create('user_task', function (Blueprint $table) {
-            $table->bigInteger('task_id')->unsigned();
+            $table->bigInteger('task_model_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
 
-            $table->foreign('task_id')
+            $table->foreign('task_model_id')
                     ->references('id')
                     ->on('tasks')
                     ->onDelete('cascade');

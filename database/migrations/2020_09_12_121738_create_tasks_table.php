@@ -20,6 +20,7 @@ class CreateTasksTable extends Migration
             $table->float('money');
             $table->tinyInteger('day_off');
             $table->dateTime('day_work');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

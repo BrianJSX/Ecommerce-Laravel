@@ -194,85 +194,87 @@
             @endhasanyrole
 
             @hasanyrole('super_admin|admin')
-            {{-- ROLES --}}
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false"
-                 aria-controls="ui-basic">
-                 <i class="mdi mdi-wallet-travel menu-icon"></i>
-                  <span class="menu-title">Role</span>
-                  <i class="menu-arrow"></i>
-              </a>
-              <div class="collapse" id="roles">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{route('addrole')}}">Thêm</a>
-                      </li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('allrole')}}">Tất cả roles</a>
-                    </li>
-                </ul>
-              </div>
-            </li>
-            {{-- PERMISSION --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#permissions" aria-expanded="false"
-                  aria-controls="ui-basic">
-                  <i class="mdi mdi-chart-pie menu-icon"></i>
-                    <span class="menu-title">Permissions</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="permissions">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('addpermission')}}">Thêm</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('allpermission')}}">Tất cả permissions</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- decentralization --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#decentralizations" aria-expanded="false"
-                  aria-controls="ui-basic">
-                  <i class="mdi mdi-clipboard-account menu-icon"></i>
-                    <span class="menu-title">Decentralization</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="decentralizations">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission trong Roles</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Permissions trong Roles</a>
-                        </li>
-                    </ul>
-
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm Roles cho Users</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Roles trong Users</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- USER --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
+                @unlessrole('admin')
+                {{-- ROLES --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="mdi mdi-wallet-travel menu-icon"></i>
+                        <span class="menu-title">Role</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="roles">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addrole')}}">Thêm</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('allrole')}}">Tất cả roles</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- PERMISSION --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#permissions" aria-expanded="false"
                     aria-controls="ui-basic">
-                    <i class="mdi mdi-comment-account menu-icon"></i>
-                    <span class="menu-title">Users</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="users">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                    <i class="mdi mdi-chart-pie menu-icon"></i>
+                        <span class="menu-title">Permissions</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="permissions">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addpermission')}}">Thêm</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('allpermission')}}">Tất cả permissions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- decentralization --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#decentralizations" aria-expanded="false"
+                    aria-controls="ui-basic">
+                    <i class="mdi mdi-clipboard-account menu-icon"></i>
+                        <span class="menu-title">Decentralization</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="decentralizations">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('adddecentralization')}}">Thêm Permission trong Roles</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('showpermissionofrole')}}">Permissions trong Roles</a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('addrolesuser')}}">Thêm Roles cho Users</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('showroleofuser')}}">Roles trong Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{-- USER --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="mdi mdi-comment-account menu-icon"></i>
+                        <span class="menu-title">Users</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="users">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endunlessrole
             {{-- TASK --}}
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#tasks" aria-expanded="false"

@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
     });
     //--------------------------------------SUPER_ADMIN-------------------------------------------//
 
-    Route::group(['middleware' => 'role:super_admin|admin'], function () {
+    Route::group(['middleware' => 'role:super_admin'], function () {
         //ROLES
         Route::group(['prefix' => 'role'], function () {
             Route::get('view_role','RoleController@allrole')->name('allrole');
@@ -103,10 +103,11 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
             Route::post('update_user/{id}', 'UserController@update');
             Route::get('detele_user/{id}', 'UserController@destroy')->name('destroyuser');
         });
-        Route::group(['prefix' => 'tasks'], function () {
-            Route::get('/view_users_tasks', 'TasksController@getUserTask')->name('view_user_task');
-            Route::get('/view_tasks/{id}', 'TasksController@getTask')->name('view_tasks');
-        });
+    });
+    //TASK
+    Route::group(['prefix' => 'tasks' ,'middleware' => ['role:super-admin|admin']], function () {
+        Route::get('/view_users_tasks', 'TasksController@getUserTask')->name('view_user_task');
+        Route::get('/view_tasks/{id}', 'TasksController@getTask')->name('view_tasks');
     });
 
     //-------------------------------------------POSTER----------------------------------------//

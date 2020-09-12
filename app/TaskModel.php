@@ -10,8 +10,8 @@ class TaskModel extends Model
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsToMany(User::class, 'user_task');
     }
 }

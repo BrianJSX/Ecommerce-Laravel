@@ -41,12 +41,14 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->phone}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                           </table>
                     </div>
@@ -64,15 +66,25 @@
                     <thead>
                       <tr>
                           <th>ID</th>
-                          <th>Họ tên</th>
-                          <th>Số điện thoại</th>
-                          <th>Email</th>
-                          <th>Roles</th>
-                          <th>Action</th>
+                          <th>Công việc</th>
+                          <th>Địa chỉ</th>
+                          <th>Vắng</th>
+                          <th>Ngày làm</th>
+                          <th>status</th>
+                          <th>Tiền công</th>
                       </tr>
                     </thead>
                     <tbody>
-
+                        @foreach ($tasks as $task)
+                        <tr>
+                            <td>{{$task->id}}</td>
+                            <td>{{$task->job}}</td>
+                            <td>{{$task->address}}</td>
+                            <td>{{$task->day_off}}</td>
+                            <td>{{$task->day_work}}</td>
+                            <td>sadsa</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
