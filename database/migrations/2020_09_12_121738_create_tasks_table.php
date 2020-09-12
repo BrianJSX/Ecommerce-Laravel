@@ -18,10 +18,6 @@ class CreateTasksTable extends Migration
             $table->string('job');
             $table->string('address');
             $table->float('money');
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')
-                    ->references('id')
-                    ->on('users');
             $table->tinyInteger('day_off');
             $table->dateTime('day_work');
             $table->timestamps();

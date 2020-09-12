@@ -15,9 +15,11 @@ class VpProduct extends Migration
     {
         Schema::create('vp_product', function (Blueprint $table) {
             $table->increments('prod_id');
-            $table->string('prod_name');
-            $table->string('prod_slug');
+            $table->string('prod_name')->unique();
+            $table->string('prod_slug')->unique();
+            $table->string('prod_code');
             $table->integer('prod_price');
+            $table->float('prod_sale');
             $table->string('pro_img');
             $table->string('prod_warranty');
             $table->string('prod_accessories');
@@ -27,15 +29,12 @@ class VpProduct extends Migration
             $table->text('prod_description');
             $table->tinyInteger('prod_featured');
             $table->integer('prod_cate')->unsigned();
-            $table->integer('prod_brand')->unsigned();
+
             $table->foreign('prod_cate')
-                  ->references('id')
+                  ->references('category_id')
                   ->on('tbl_category_product')
                   ->onDelete('cascade');
-            $table->foreign('prod_brand')
-                  ->references('id')
-                  ->on('tbl_brand')
-                  ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

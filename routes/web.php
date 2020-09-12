@@ -103,6 +103,10 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
             Route::post('update_user/{id}', 'UserController@update');
             Route::get('detele_user/{id}', 'UserController@destroy')->name('destroyuser');
         });
+        Route::group(['prefix' => 'tasks'], function () {
+            Route::get('/view_users_tasks', 'TasksController@getUserTask')->name('view_user_task');
+            Route::get('/view_tasks/{id}', 'TasksController@getTask')->name('view_tasks');
+        });
     });
 
     //-------------------------------------------POSTER----------------------------------------//

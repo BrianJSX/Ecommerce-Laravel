@@ -16,10 +16,12 @@ class TblOrder extends Migration
         Schema::create('tbl_order', function (Blueprint $table) {
             $table->increments('order_id');
             $table->string('order_name');
-            $table->string('order_number');
+            $table->string('order_phone');
             $table->string('order_email');
+            $table->string('order_address');
             $table->integer('order_quantity');
             $table->integer('order_total');
+            $table->text('order_notes');
             $table->tinyInteger('order_status');
             $table->timestamps();
         });

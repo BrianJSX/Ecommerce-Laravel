@@ -14,10 +14,11 @@ class CreateTblBrandProduct extends Migration
     public function up()
     {
         Schema::create('tbl_brand', function (Blueprint $table) {
-            $table->Increments('id');
-            $table->string('category_name');
-            $table->text('category_desc');
-            $table->integer('category_status');
+            $table->Increments('brand_id');
+            $table->string('brand_name');
+            $table->string('brand_slug');
+            $table->text('brand_desc');
+            $table->integer('brand_status');
             $table->timestamps();
         });
     }

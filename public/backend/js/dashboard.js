@@ -236,13 +236,9 @@
         search: ""
       },
       "order": [[ 0, "desc" ]],
-      columnDefs: [{ width: 10, targets: 3 }],
-      fixedColumns: true,
       searching: true,
       paging: true,
       info: true,
-      scrollX:        true,
-      scrollCollapse: true,
     });
 
   });

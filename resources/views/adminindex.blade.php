@@ -41,13 +41,15 @@
                 <ul class="navbar-nav mr-lg-4 w-100">
                     <li class="nav-item nav-search d-none d-lg-block w-100 row">
                         <div class="input-group">
+                            @hasanyrole('super_admin|admin|poster')
                             <div class="input-group-prepend">
                                 <button type="submit" class="input-group-text" id="search">
                                     <i class="mdi mdi-magnify"></i>
                                 </button>
                             </div>
-                            <input name="search_product" type="text" class="form-control" placeholder="Nhập để tìm sản phẩm"
-                                   aria-label="search" aria-describedby="search">
+                                <input name="search_product" type="text" class="form-control" placeholder="Nhập để tìm sản phẩm"
+                                aria-label="search" aria-describedby="search">
+                            @endhasanyrole
                         </div>
                     </li>
                 </ul>
@@ -281,11 +283,7 @@
                 </a>
                 <div class="collapse" id="tasks">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('adduser')}}">Thêm</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('alluser')}}">Tất cả users</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('view_user_task')}}">xem Tasks</a>
                         </li>
                     </ul>
                 </div>
@@ -317,6 +315,8 @@
         @yield('AllPermissionContent')
         @yield('AllPermissionRoleContent')
         @yield('AllRoleUserContent')
+        @yield('AllUserTask')
+        @yield('AllTask')
 
         @yield('editCategory')
         @yield('editBrand')
@@ -329,6 +329,8 @@
         @yield('editRoleUser')
         @yield('EditUser')
         @yield('UserContent')
+
+
     <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -361,34 +363,18 @@
 
 <!-- endinject -->
 <!-- Custom js for this page-->
+<script src="{{ URL::asset('./resources/js/jquery.min.js')}}"></script>
 <script src="{{ URL::asset('./public/backend/js/dashboard.js')}}"></script>
 <script src="{{ URL::asset('./public/backend/js/data-table.js')}}"></script>
 <script src="{{ URL::asset('./public/backend/js/jquery.dataTables.js')}}"></script>
 <script src="{{ URL::asset('./public/backend/js/dataTables.bootstrap4.js')}}"></script>
-<script src="{{ URL::asset('./resources/js/jquery.min.js')}}"></script>
 <script src="{{ URL::asset('./resources/js/ajax.js')}}"></script>
+@yield('script_UserTask')
 <script>
     $(document).ready(function () {
         $("#checkall").click(function () {
             $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
         });
-        // //Search Product
-        // $('#search_product').keyup(function(){
-        //     var query = $(this).val();
-        //     if(query != ''){
-        //       var _token = $('input[name="_token"]').val();
-        //       $.ajax({
-        //         url:"{{ route('searchproduct') }}",
-        //         method: "get",
-        //         data:{query:query,_token:_token},
-        //         success:function(data){
-        //           $('#productlistsearch').fadeIn();
-        //           $('#productlistsearch').html(data);
-        //         }
-        //       });
-        //     }
-        //     // console.log(query);
-        // });
     });
 </script>
 </body>

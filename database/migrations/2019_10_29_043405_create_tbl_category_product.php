@@ -15,9 +15,17 @@ class CreateTblCategoryProduct extends Migration
     {
         Schema::create('tbl_category_product', function (Blueprint $table) {
             $table->Increments('category_id');
-            $table->string('category_name');
+            $table->string('category_name')->unique();
+            $table->string('category_slug')->unique();
             $table->text('category_desc');
             $table->integer('category_status');
+            $table->interger('category_brand')->unsigned();
+
+            $table->foreign('category_brand')
+                    ->references('brand_id')
+                    ->on('tbl_brand')
+                    ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -19,6 +19,8 @@ class TblSlider extends Migration
             $table->text('slider_content');
             $table->string('slider_links');
             $table->string('slider_img');
+            $table->string('slider_status_new');
+            $table->integer('slider_status');
             $table->timestamps();
         });
     }
