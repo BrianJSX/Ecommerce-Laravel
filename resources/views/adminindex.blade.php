@@ -191,7 +191,7 @@
             </li>
             @endhasanyrole
 
-            @role('super_admin')
+            @hasanyrole('super_admin|admin')
             {{-- ROLES --}}
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#roles" aria-expanded="false"
@@ -275,7 +275,7 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#tasks" aria-expanded="false"
                     aria-controls="ui-basic">
-                    <i class="mdi mdi-comment-account menu-icon"></i>
+                    <i class="mdi mdi-tooltip-text menu-icon"></i>
                     <span class="menu-title">Tasks</span>
                     <i class="menu-arrow"></i>
                 </a>
@@ -290,7 +290,7 @@
                     </ul>
                 </div>
             </li>
-            @endrole
+            @endhasanyrole
         </ul>
     </nav>
     <!-- partial -->

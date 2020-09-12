@@ -19,12 +19,13 @@ class StaffController extends Controller
             $user = Auth::user();
             $checkrole = $user->hasrole(['super_admin', 'admin', 'poster', 'writer']);
             if ($checkrole) {
-               Session::put('stafflogin','Vui lòng đăng nhập tại trang Admin');
+               Session::put('staffLogin','Vui lòng đăng nhập tại trang Admin');
                return back();
             }
-            return "ok";
+            return view('staff.staffIndex');
+
         }
-        Session::put('stafflogin', 'Tài khoản hoặc mật khẩu không chính xác');
+        Session::put('staffLogin', 'Tài khoản hoặc mật khẩu không chính xác');
         return back()->withInput();
     }
 }
