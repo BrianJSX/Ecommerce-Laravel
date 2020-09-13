@@ -285,7 +285,11 @@
                 </a>
                 <div class="collapse" id="tasks">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('view_user_task')}}">xem Tasks</a>
+                        <li class="nav-item"><a class="nav-link" href="{{route('create_task')}}">Tasks</a>
+                        </li>
+                    </ul>
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"><a class="nav-link" href="{{route('view_user_task')}}">Nhân Viên</a>
                         </li>
                     </ul>
                 </div>
@@ -307,6 +311,8 @@
         @yield('AddPermissionContent')
         @yield('AddUserContent')
         @yield('AddRolesUserContent')
+        @yield('Task')
+        @yield('AddUserTask')
 
         @yield('AllCategoryContent')
         @yield('AllSliderContent')

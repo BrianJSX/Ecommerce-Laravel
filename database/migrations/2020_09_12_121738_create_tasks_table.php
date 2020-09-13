@@ -18,9 +18,9 @@ class CreateTasksTable extends Migration
             $table->string('job');
             $table->string('address');
             $table->float('money');
-            $table->tinyInteger('day_off');
             $table->dateTime('day_work');
-            $table->tinyInteger('status');
+            $table->tinyInteger('day_off')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

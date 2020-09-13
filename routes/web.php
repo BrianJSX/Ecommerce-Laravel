@@ -105,9 +105,15 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
         });
     });
     //TASK
-    Route::group(['prefix' => 'tasks' ,'middleware' => ['role:super-admin|admin']], function () {
+    Route::group(['prefix' => 'tasks' ,'middleware' => 'role:super_admin|admin'], function () {
         Route::get('/view_users_tasks', 'TasksController@getUserTask')->name('view_user_task');
-        Route::get('/view_tasks/{id}', 'TasksController@getTask')->name('view_tasks');
+        Route::get('/view_users_detail_tasks/{id}', 'TasksController@getUserDetailTask')->name('view_tasks_of_user');
+
+        Route::get('/create_task', 'TasksController@getCreate')->name('create_task');
+        Route::post('/create_task', 'TasksController@postCreate')->name('create_task');
+
+        Route::get('/create_user_task/{id}', 'TasksController@getCreateUserTask')->name('create_user_task');
+        Route::post('/create_user_task/{id}', 'TasksController@postCreateUserTask');
     });
 
     //-------------------------------------------POSTER----------------------------------------//

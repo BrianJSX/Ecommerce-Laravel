@@ -68,10 +68,10 @@
                           <th>ID</th>
                           <th>Công việc</th>
                           <th>Địa chỉ</th>
-                          <th>Vắng</th>
                           <th>Ngày làm</th>
-                          <th>status</th>
                           <th>Tiền công</th>
+                          <th>status</th>
+                          <th>Vắng</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -80,9 +80,22 @@
                             <td>{{$task->id}}</td>
                             <td>{{$task->job}}</td>
                             <td>{{$task->address}}</td>
-                            <td>{{$task->day_off}}</td>
                             <td>{{$task->day_work}}</td>
-                            <td>sadsa</td>
+                            <td>{{number_format($task->money)}}</td>
+                            <td>
+                                @if($task->status == 0)
+                                    <button type="button" class="btn btn-outline-danger">Chưa làm</button>
+                                @else
+                                    <button type="button" class="btn btn-outline-su">Đã làm</button>
+                                @endif
+                            </td>
+                            <td>
+                                @if($task->status == 0)
+                                    <button type="button" class="btn btn-outline-success">Không</button>
+                                @else
+                                    <button type="button" class="btn btn-outline-danger">có</button>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
