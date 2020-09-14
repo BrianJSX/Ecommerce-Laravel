@@ -76,24 +76,24 @@
                     </thead>
                     <tbody>
                         @foreach ($tasks as $task)
-                        <tr>
+                        <tr @if($task->pivot->status == 0 || $task->pivot->day_off == 1) style="background-color: #f5c4c4" @else style="background-color: #d0f5c4; @endif" >
                             <td>{{$task->id}}</td>
                             <td>{{$task->job}}</td>
                             <td>{{$task->address}}</td>
                             <td>{{$task->day_work}}</td>
                             <td>{{number_format($task->money)}}</td>
                             <td>
-                                @if($task->status == 0)
-                                    <button type="button" class="btn btn-outline-danger">Chưa làm</button>
+                                @if($task->pivot->status == 0)
+                                    <button onclick="location.href='{{route('taskUserWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-success">Ấn hoàn thành</button>
                                 @else
-                                    <button type="button" class="btn btn-outline-su">Đã làm</button>
+                                    <button onclick="location.href='{{route('taskUserNotWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-danger">Ấn chưa làm</button>
                                 @endif
                             </td>
                             <td>
-                                @if($task->status == 0)
-                                    <button type="button" class="btn btn-outline-success">Không</button>
+                                @if($task->pivot->day_off == 0)
+                                    <button type="button" class="btn btn-success">Không vắng</button>
                                 @else
-                                    <button type="button" class="btn btn-outline-danger">có</button>
+                                    <button type="button" class="btn btn-danger">Vắng</button>
                                 @endif
                             </td>
                         </tr>

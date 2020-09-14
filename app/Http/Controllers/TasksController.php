@@ -8,6 +8,9 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\TaskModel;
 use Illuminate\Support\Facades\Redirect;
+use Session;
+use App\UserTaskModel;
+use DB;
 
 class TasksController extends Controller
 {
@@ -23,7 +26,10 @@ class TasksController extends Controller
 
         if ($checkuser > 0 && $checkrole) {
             $user = User::where('id', $id)->get();
+            $userId = User::where('id', $id)->value('id');
             $task = User::find($id)->tasks;
+
+            $data['userId'] = $userId;
             $data['tasks'] = $task;
             $data['users'] = $user;
             // dd($data);
@@ -50,6 +56,7 @@ class TasksController extends Controller
        $task->money = $money;
        $task->day_work = $day_work;
        $task->save();
+       Session::put('message', 'Thêm task thành công!!');
        return back();
     }
 
@@ -75,7 +82,48 @@ class TasksController extends Controller
         return back();
     }
 
-    public function destroy($id){
-        return "ok";
+    public function destroyTask($id){
+        $checktask = TaskModel::where('id', $id)->count();
+        if($checktask > 0 ){
+            Session::put('messageDetroy', 'Xóa Task thành công');
+            $task = TaskModel::destroy($id);
+            return back();
+        }
+        Session::put('messageDetroy','Không có id task nào trùng khớp !!');
+        return redirect()->route('create_task');
     }
+
+    public function getTaskWork($id, $user){
+        $checktask = DB::table('user_task')
+                    ->where('task_model_id', $id)
+                    ->where('user_id', $user)
+                    ->count();
+        if($checktask > 0){
+            $task = DB::table('user_task')
+                    ->where('task_model_id', $id)
+                    ->where('user_id', $user)
+                    ->update([
+                        'status' => '1'
+                    ]);
+                    return back();
+        }
+        // return "work";
+    }
+
+    public function getTaskNotWork($id, $user){
+        $checktask = DB::table('user_task')
+                    ->where('task_model_id', $id)
+                    ->where('user_id', $user)
+                    ->count();
+        if($checktask > 0){
+        $task = DB::table('user_task')
+                ->where('task_model_id', $id)
+                ->where('user_id', $user)
+                ->update([
+                    'status' => '0'
+                ]);
+            return back();
+        }
+    }
+
 }

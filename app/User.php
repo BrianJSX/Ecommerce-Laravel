@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\UserTaskModel;
 
 
 class User extends Authenticatable
@@ -44,6 +45,10 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->belongsToMany(TaskModel::class, 'user_task');
+        return $this->belongsToMany(TaskModel::class, 'user_task')->using('App\UserTaskModel')
+                                                                    ->withPivot([
+                                                                        'status',
+                                                                        'day_off',
+                                                                    ]);;
     }
 }

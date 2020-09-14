@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class UserTaskModel extends Model
+class UserTaskModel extends Pivot
 {
-    protected $table = 'user_task';
 
 }

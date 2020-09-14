@@ -277,7 +277,7 @@
                           </tr>
                         @else
                           @foreach ($orderdetail as $order)
-                            <tr @if($order->order_status == 1) style="background-color:#89e289" @else style="background-color:#e67474"  @endif>
+                            <tr @if($order->order_status == 1) style="background-color:#89e289" @else style="background-color:#f5a6a6"  @endif>
                               <td>{{$order->order_id}}</td>
                               <td>{{$order->order_name}}</td>
                               <td>{{$order->order_phone}}</td>

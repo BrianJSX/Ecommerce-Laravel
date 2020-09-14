@@ -12,6 +12,10 @@ class TaskModel extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_task');
+        return $this->belongsToMany(User::class, 'user_task')->using('App\UserTaskModel')
+                                                            ->withPivot([
+                                                                'status',
+                                                                'day_off',
+                                                            ]);
     }
 }

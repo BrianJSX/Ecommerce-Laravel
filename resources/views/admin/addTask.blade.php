@@ -10,6 +10,22 @@
       <form class="forms-sample" action="" method="post">
         {{csrf_field()}}
         <div class="row">
+            <?php
+                $message = Session::get('message');
+                if($message){
+                    print('
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">'.
+                    $message.'
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    ');
+                    Session::put('message', Null);
+                }
+             ?>
+        </div>
+        <div class="row">
             <div class="col-4">
               <input name="task_job" type="text" class="form-control" placeholder="công việc" required>
             </div>
@@ -59,7 +75,31 @@
                         <td>{{$task->day_work}}</td>
                         <td>
                             <button onclick="location.href='{{route('create_user_task', $task->id)}}'" type="button" class="btn btn-outline-primary">Gắn staff</button>
-                            <button type="button" class="btn btn-outline-danger">Xóa</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{$task->id}}">
+                                Xóa
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{$task->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Bạn có muốn xóa Task có ID {{$task->id}}
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button onclick="location.href='{{route('destroyTask',$task->id)}}'" type="button" class="btn btn-danger">Xóa</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

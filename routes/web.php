@@ -114,6 +114,12 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
 
         Route::get('/create_user_task/{id}', 'TasksController@getCreateUserTask')->name('create_user_task');
         Route::post('/create_user_task/{id}', 'TasksController@postCreateUserTask');
+
+        Route::get('destroy_task/{id}', 'TasksController@destroyTask' )->name('destroyTask');
+
+        Route::get('work/{id}/{user}', 'TasksController@getTaskWork')->name('taskUserWork');
+        Route::get('dont_work/{id}/{user}', 'TasksController@getTaskNotWork')->name('taskUserNotWork');
+
     });
 
     //-------------------------------------------POSTER----------------------------------------//
