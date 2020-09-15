@@ -70,8 +70,9 @@
                           <th>Địa chỉ</th>
                           <th>Ngày làm</th>
                           <th>Tiền công</th>
-                          <th>status</th>
-                          <th>Vắng</th>
+                          <th>Tình trạng</th>
+                          {{-- <th>Vắng</th> --}}
+                          <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,16 +85,24 @@
                             <td>{{number_format($task->money)}}</td>
                             <td>
                                 @if($task->pivot->status == 0)
-                                    <button onclick="location.href='{{route('taskUserWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-success">Ấn hoàn thành</button>
+                                    <label class="badge badge-danger">Chưa làm</label>
                                 @else
-                                    <button onclick="location.href='{{route('taskUserNotWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-danger">Ấn chưa làm</button>
+                                    <label class="badge badge-success">Hoàn thành</label>
                                 @endif
+
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($task->pivot->day_off == 0)
                                     <button type="button" class="btn btn-success">Không vắng</button>
                                 @else
                                     <button type="button" class="btn btn-danger">Vắng</button>
+                                @endif
+                            </td> --}}
+                            <td>
+                                @if($task->pivot->status == 0)
+                                    <button onclick="location.href='{{route('taskUserWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-success">Ấn hoàn thành</button>
+                                @else
+                                    <button onclick="location.href='{{route('taskUserNotWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-danger">Ấn chưa làm</button>
                                 @endif
                             </td>
                         </tr>

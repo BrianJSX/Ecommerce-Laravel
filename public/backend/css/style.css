@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -43,7 +43,7 @@
     + Lists
     + Tables
   * Plugin overrides
-    + Data-tables  
+    + Data-tables
   * Landing screens
     + Auth
   * Layout
@@ -20865,7 +20865,7 @@ dl li {
 }
 
 .table td img {
- 
+
 }
 
 .table td .badge {
@@ -21010,6 +21010,7 @@ dl li {
 
 .auth .auth-form-light {
   background: #ffffff;
+  border-radius: 20px;
 }
 
 .auth .auth-form-light select {
@@ -21120,7 +21121,7 @@ dl li {
 }
 
 .content-wrapper {
-  background: #f3f3f3;
+  background: #e8e8e8;
   padding: 2.1rem 1.04rem;
   width: 100%;
   -webkit-flex-grow: 1;

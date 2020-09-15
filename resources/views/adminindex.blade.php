@@ -194,6 +194,25 @@
             @endhasanyrole
 
             @hasanyrole('super_admin|admin')
+                {{-- TASK --}}
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#tasks" aria-expanded="false"
+                        aria-controls="ui-basic">
+                        <i class="mdi mdi-tooltip-text menu-icon"></i>
+                        <span class="menu-title">Tasks</span>
+                        <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="tasks">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('create_task')}}">Tasks</a>
+                            </li>
+                        </ul>
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"><a class="nav-link" href="{{route('view_user_task')}}">Nhân Viên</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 @unlessrole('admin')
                 {{-- ROLES --}}
                 <li class="nav-item">
@@ -275,25 +294,6 @@
                     </div>
                 </li>
                 @endunlessrole
-            {{-- TASK --}}
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#tasks" aria-expanded="false"
-                    aria-controls="ui-basic">
-                    <i class="mdi mdi-tooltip-text menu-icon"></i>
-                    <span class="menu-title">Tasks</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="tasks">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('create_task')}}">Tasks</a>
-                        </li>
-                    </ul>
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{route('view_user_task')}}">Nhân Viên</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
             @endhasanyrole
         </ul>
     </nav>

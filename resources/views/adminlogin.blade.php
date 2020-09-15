@@ -29,7 +29,7 @@
                 <div class="brand-logo">
                   <img src="{{asset('/public/backend/images/logo.svg')}}" alt="logo">
                 </div>
-                <h4>Xin chào! Hãy bắt đầu nào.. yeb.......</h4>
+                <h4>Chào!! Chúc bạn ngày mới vui vẻ :<</h4>
                 <h6 class="font-weight-light">Vui Lòng đăng nhập để quản lý.</h6>
                 <form class="pt-3" method="POST">
                   <?php
@@ -56,8 +56,8 @@
                   <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                       <label class="form-check-label text-muted">
-                        <input type="checkbox" class="form-check-input">
-                            Keep me signed in
+                        {{-- <input type="checkbox" class="form-check-input">
+                            Keep me signed in --}}
                       </label>
                     </div>
                     <!-- <a href="#" class="auth-link text-black">Forgot password?</a> -->
