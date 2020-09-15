@@ -232,13 +232,21 @@
     }
 
     $('#recent-purchases-listing').DataTable({
-      "language": {
-        search: ""
-      },
-      "order": [[ 0, "desc" ]],
-      searching: true,
-      paging: true,
-      info: true,
+        dom: 'Bfrtip',
+        buttons: [
+            'print',
+        ],
+        "language": {
+            search: ""
+        },
+        "order": [[ 0, "desc" ]],
+        searching: true,
+        paging: true,
+        "paginate": {
+            "<": "<"
+          }
+        // info: true,
+
     });
 
   });

@@ -9,6 +9,10 @@ class TaskModel extends Model
     protected $table = 'tasks';
     protected $primaryKey = 'id';
     protected $guarded = [];
+    protected $casts = [
+        'day_work' => 'datetime:d-m-Y',
+
+    ];
 
     public function users()
     {

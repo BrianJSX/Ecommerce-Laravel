@@ -12,6 +12,8 @@
 */
 //--------------------------------------------------------------------------------------------------------------------------//
 //HOME
+
+use Illuminate\Routing\Console\MiddlewareMakeCommand;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeControler@index');
@@ -38,9 +40,15 @@ Route::group(['prefix' => 'cart'], function () {
 Route::get('admin', 'AdminController@admin')->name('admin')->middleware('checkloginadmin');
 Route::post('admin', 'AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
-Route::group(['prefix' => 'staff'], function () {
+//STAFF
+Route::group(['prefix' => 'staff', 'middleware' => 'role:staff|super_admin'], function () {
     Route::get('/', 'StaffController@staff')->name('staff')->middleware('CheckAdminStaff');
-    Route::post('/', "StaffController@login");
+    Route::post('/', "StaffController@login")->middleware('CheckAdminStaff');
+
+    Route::group(['prefix' => 'dashboard', 'middleware' => 'CheckStaffDashBoard'], function () {
+        Route::get('logout', 'StaffController@logout')->name('logout_staff');
+        Route::get('/', 'StaffController@viewDashBoard')->name('view_dashboard_staff');
+    });
 });
 
 Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], function () {

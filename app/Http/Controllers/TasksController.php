@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Session;
 use App\UserTaskModel;
 use DB;
+use Illuminate\Support\Carbon;
 
 class TasksController extends Controller
 {
@@ -20,22 +21,32 @@ class TasksController extends Controller
         return view('admin.allUserTask', $data);
     }
     public function getUserDetailTask($id){
+        $now = Carbon::now();
+        $monthNow = $now->month;
+        $yearNow = $now->year;
         $checkuser = User::where('id', $id)->count();
         $users = User::where('id', $id)->first();
         $checkrole = $users->hasRole('staff');
+        $salaryMonth = User::find($id)->tasks()->whereMonth('day_work', $monthNow)->wherePivot('status', 1)->sum('money');
+        $salaryYear = User::find($id)->tasks()->whereYear('day_work', $yearNow)->wherePivot('status', 1)->sum('money');
+        $taskUnComplete = User::find($id)->tasks()->wherePivot('status', 0)->count();
+        $taskComplete = User::find($id)->tasks()->wherePivot('status', 1)->count();
 
         if ($checkuser > 0 && $checkrole) {
             $user = User::where('id', $id)->get();
             $userId = User::where('id', $id)->value('id');
             $task = User::find($id)->tasks;
-
+            $data['salaryYear'] = $salaryYear;
+            $data['salaryMonth'] = $salaryMonth;
+            $data['taskUnComplete'] = $taskUnComplete;
+            $data['taskComplete'] = $taskComplete;
             $data['userId'] = $userId;
             $data['tasks'] = $task;
             $data['users'] = $user;
-            // dd($data);
             return view('admin.allUserDetailTask', $data);
         }
         return redirect()->route('view_user_task');
+
     }
 
     public function getCreate(){

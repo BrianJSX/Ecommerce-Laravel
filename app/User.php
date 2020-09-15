@@ -41,6 +41,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'day_work' => 'datetime:d-m-Y',
+
     ];
 
     public function tasks()

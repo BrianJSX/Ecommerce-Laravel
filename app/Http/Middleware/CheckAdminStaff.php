@@ -17,8 +17,11 @@ class CheckAdminStaff
     public function handle($request, Closure $next)
     {
         $admin_id =  Session::get('admin_id');
-        if($admin_id){
+        $staff_id = Session::get('staff_id');
+        if ($admin_id) {
             return Redirect::to('admin');
+        } elseif ($staff_id) {
+            return Redirect::to('staff/dashboard');
         }
         return $next($request);
     }

@@ -72,7 +72,7 @@
                         <td>{{$task->job}}</td>
                         <td>{{$task->address}}</td>
                         <td>{{number_format($task->money)}}</td>
-                        <td>{{$task->day_work}}</td>
+                        <td>{{\Carbon\Carbon::parse($task->day_work)->format('d/m/Y')}}</td>
                         <td>
                             <button onclick="location.href='{{route('create_user_task', $task->id)}}'" type="button" class="btn btn-outline-primary">Gắn staff</button>
                             <!-- Button trigger modal -->

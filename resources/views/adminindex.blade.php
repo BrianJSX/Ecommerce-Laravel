@@ -377,12 +377,17 @@
 <script src="{{ URL::asset('./public/backend/js/jquery.dataTables.js')}}"></script>
 <script src="{{ URL::asset('./public/backend/js/dataTables.bootstrap4.js')}}"></script>
 <script src="{{ URL::asset('./resources/js/ajax.js')}}"></script>
-@yield('script_UserTask')
+
+{{-- <script src="{{ URL::asset('./public/backend/js/jquery.dataTable.min.js')}}"></script> --}}
+<script src="{{ URL::asset('./public/backend/js/buttons.print.min.js')}}"></script>
+<script src="{{ URL::asset('./public/backend/js/dataTables.buttons.min.js')}}"></script>
 <script>
     $(document).ready(function () {
         $("#checkall").click(function () {
             $("input[type=checkbox]").prop('checked', $(this).prop('checked'));
         });
+        $(document.body).find( '.dt-button' )
+                        .addClass( 'btn btn-primary' );
     });
 </script>
 </body>

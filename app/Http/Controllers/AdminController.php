@@ -68,10 +68,6 @@ class AdminController extends Controller
             session::put('admin_id', Null);
             session::put('admin_name', Null);
             return Redirect::to('admin');
-        }else{
-            session::put('guest_id', Null);
-            session::put('guest_name', Null);
-            return Redirect::to('admin');
         }
 
     }

@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Session;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
+
 class checklogindashboard
 {
     /**
@@ -15,12 +17,14 @@ class checklogindashboard
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
         $admin = Session::has('admin_id');
+        $staff = Session::has('staff_id');
         if($admin){
             return $next($request);
-        }else{
-            return redirect()->route('admin');
+        } elseif ($staff){
+            return Redirect::to('staff/dashboard');
         }
+            return redirect()->route('admin');
     }
 }

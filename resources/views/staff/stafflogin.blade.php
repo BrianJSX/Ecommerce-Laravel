@@ -243,15 +243,14 @@
    </footer>
    <!-- Argon Scripts -->
    <!-- Core -->
-   <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-   <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-   <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-   <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+   <script src="{{asset('./public/staff/assets/vendor/jquery/dist/jquery.min.js')}}"></script>
+   <script src="{{asset('./public/staff/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+   <script src="{{asset('./public/staff/assets/vendor/js-cookie/js.cookie.js')}}"></script>
+   <script src="{{asset('./public/staff/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js')}}"></script>
+   <script src="{{asset('./public/staff/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js')}}"></script>
    <!-- Argon JS -->
-   <script src="./assets/js/argon.js?v=1.1.0"></script>
+   <script src="{{asset('./public/staff/assets/js/argon.js?v=1.1.0')}}"></script>
    <!-- Demo JS - remove this in your project -->
-   <script src="./assets/js/demo.min.js"></script>
  </body>
 
  </html>
