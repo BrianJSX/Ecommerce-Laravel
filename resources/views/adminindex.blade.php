@@ -388,6 +388,14 @@
         });
         $(document.body).find( '.dt-button' )
                         .addClass( 'btn btn-primary' );
+        $('#recent-purchases-listing-today').DataTable({
+            "language": {
+                search: ""
+            },
+            "order": [[ 0, "desc" ]],
+            searching: true,
+            paging: true,
+        });
     });
 </script>
 </body>

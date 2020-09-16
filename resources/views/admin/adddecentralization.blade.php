@@ -7,8 +7,7 @@
       <div>
         @include('errors.note')
       </div>
-      <form class="forms-sample" action="" method="post">
-        {{csrf_field()}}
+      <form class="forms-sample" method="post">
         <div class="form-group">
             <label for="exampleInputName1">Roles *</label>
             <select name="Roles_decentralization" class="form-control" id="exampleSelectGender" required>
@@ -25,6 +24,8 @@
                 @endforeach
             </select>
         </div>
+        {{csrf_field()}}
+
         <div class="row">
             <span class="m-1">
                 <button type="submit" class="btn btn-primary mr-2">Thêm Quyền</button>

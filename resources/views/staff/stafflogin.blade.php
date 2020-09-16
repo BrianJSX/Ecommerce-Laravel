@@ -202,20 +202,19 @@
              </div>
            </div>
            <div class="row mt-3">
-             <div class="col-6">
+             {{-- <div class="col-6">
                <a href="#" class="text-light"><small>Forgot password?</small></a>
              </div>
              <div class="col-6 text-right">
                <a href="#" class="text-light"><small>Create new account</small></a>
-             </div>
+             </div> --}}
            </div>
          </div>
        </div>
      </div>
-   </div>
    <!-- Footer -->
    <footer class="py-5" id="footer-main">
-     <div class="container">
+     <div class="container mt-1">
        <div class="row align-items-center justify-content-xl-between">
          <div class="col-xl-6">
            <div class="copyright text-center text-xl-left text-muted">

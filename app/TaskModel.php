@@ -20,6 +20,7 @@ class TaskModel extends Model
                                                             ->withPivot([
                                                                 'status',
                                                                 'day_off',
+                                                                'user_complete'
                                                             ]);
     }
 }

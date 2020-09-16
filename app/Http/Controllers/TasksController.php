@@ -27,10 +27,29 @@ class TasksController extends Controller
         $checkuser = User::where('id', $id)->count();
         $users = User::where('id', $id)->first();
         $checkrole = $users->hasRole('staff');
-        $salaryMonth = User::find($id)->tasks()->whereMonth('day_work', $monthNow)->wherePivot('status', 1)->sum('money');
-        $salaryYear = User::find($id)->tasks()->whereYear('day_work', $yearNow)->wherePivot('status', 1)->sum('money');
-        $taskUnComplete = User::find($id)->tasks()->wherePivot('status', 0)->count();
-        $taskComplete = User::find($id)->tasks()->wherePivot('status', 1)->count();
+        $salaryMonth = User::find($id)
+                            ->tasks()
+                            ->whereMonth('day_work', $monthNow)
+                            ->wherePivot('status', 1)
+                            ->sum('money');
+        $salaryYear = User::find($id)
+                            ->tasks()
+                            ->whereYear('day_work', $yearNow)
+                            ->wherePivot('status', 1)
+                            ->sum('money');
+        $taskUnComplete = User::find($id)
+                            ->tasks()
+                            ->wherePivot('status', 0)
+                            ->count();
+        $taskComplete = User::find($id)
+                            ->tasks()
+                            ->wherePivot('status', 1)
+                            ->count();
+        $taskToday = User::find($id)
+                            ->tasks()
+                            ->whereDate('day_work', '=', Carbon::today()->toDateString())
+                            ->get();
+
 
         if ($checkuser > 0 && $checkrole) {
             $user = User::where('id', $id)->get();
@@ -42,6 +61,7 @@ class TasksController extends Controller
             $data['taskComplete'] = $taskComplete;
             $data['userId'] = $userId;
             $data['tasks'] = $task;
+            $data['tasksToday'] = $taskToday;
             $data['users'] = $user;
             return view('admin.allUserDetailTask', $data);
         }
@@ -105,6 +125,7 @@ class TasksController extends Controller
     }
 
     public function getTaskWork($id, $user){
+        $admin = Session::get('admin_id');
         $checktask = DB::table('user_task')
                     ->where('task_model_id', $id)
                     ->where('user_id', $user)
@@ -114,7 +135,8 @@ class TasksController extends Controller
                     ->where('task_model_id', $id)
                     ->where('user_id', $user)
                     ->update([
-                        'status' => '1'
+                        'status' => '1',
+                        'user_complete' => $admin
                     ]);
                     return back();
         }
@@ -122,6 +144,7 @@ class TasksController extends Controller
     }
 
     public function getTaskNotWork($id, $user){
+        $admin = Session::get('admin_id');
         $checktask = DB::table('user_task')
                     ->where('task_model_id', $id)
                     ->where('user_id', $user)
@@ -131,7 +154,8 @@ class TasksController extends Controller
                 ->where('task_model_id', $id)
                 ->where('user_id', $user)
                 ->update([
-                    'status' => '0'
+                    'status' => '0',
+                    'user_complete' => $admin
                 ]);
             return back();
         }

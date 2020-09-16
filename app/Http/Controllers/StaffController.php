@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use Illuminate\Support\Carbon;
+use DB;
 
 class StaffController extends Controller
 {
@@ -31,7 +32,10 @@ class StaffController extends Controller
         $taskComplete = User::find($userId)->tasks()->wherePivot('status', 1)->count();
 
         $task = User::find($userId)->tasks;
-        $task_today = User::find($userId)->tasks()->whereDay('day_work', $dayNow)->get();
+        $task_today = User::find($userId)
+                            ->tasks()
+                            ->whereDate('day_work', '=', Carbon::today()->toDateString())
+                            ->get();
         $data['user'] = $userName;
         $data['tasks_today'] = $task_today;
         $data['tasks'] = $task;
@@ -68,6 +72,25 @@ class StaffController extends Controller
          }else{
              abort('404');
          }
+     }
+
+     public function completeTask($id){
+        $user = Session::get('staff_id');
+        $checktask = DB::table('user_task')
+                    ->where('task_model_id', $id)
+                    ->where('user_id', $user)
+                    ->count();
+        if($checktask > 0){
+        $task = DB::table('user_task')
+                ->where('task_model_id', $id)
+                ->where('user_id', $user)
+                ->update([
+                    'status' => '1',
+                    'user_complete' => $user
+                ]);
+            return back();
+        }
+        return abort('404');
      }
 
 }

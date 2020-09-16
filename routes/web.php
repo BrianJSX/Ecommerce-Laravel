@@ -41,13 +41,16 @@ Route::get('admin', 'AdminController@admin')->name('admin')->middleware('checklo
 Route::post('admin', 'AdminController@loginadmin')->name('adminlogin')->middleware('checkloginadmin');
 
 //STAFF
-Route::group(['prefix' => 'staff', 'middleware' => 'role:staff|super_admin'], function () {
+Route::group(['prefix' => 'staff'], function () {
     Route::get('/', 'StaffController@staff')->name('staff')->middleware('CheckAdminStaff');
     Route::post('/', "StaffController@login")->middleware('CheckAdminStaff');
 
     Route::group(['prefix' => 'dashboard', 'middleware' => 'CheckStaffDashBoard'], function () {
-        Route::get('logout', 'StaffController@logout')->name('logout_staff');
-        Route::get('/', 'StaffController@viewDashBoard')->name('view_dashboard_staff');
+        Route::group(['middleware' => 'role:staff'], function () {
+            Route::get('logout', 'StaffController@logout')->name('logout_staff');
+            Route::get('/', 'StaffController@viewDashBoard')->name('view_dashboard_staff');
+            Route::get('/complete/{id}', 'StaffController@completeTask')->name('task_complete_staff');
+        });
     });
 });
 
@@ -89,7 +92,7 @@ Route::group(['prefix' => 'admin','middleware' => 'checklogindashboard' ], funct
 
         //DECENTRALIZATIONS
         Route::group(['prefix' => 'decentralization'], function () {
-            Route::get('create_PremissionRole', 'DecentralizationController@adddecentralization')->name('adddecentralization');
+            Route::get('create_PermissionRole', 'DecentralizationController@adddecentralization')->name('adddecentralization');
             Route::post('create_PermissionRole' , 'DecentralizationController@createPermissionRoles');
             Route::get('view_PermissionRole', 'DecentralizationController@allPermissionOfRole')->name('showpermissionofrole');
             Route::get('detele_PermissionRole/{id}', 'DecentralizationController@editRolePermission')->name('editrolepermission');

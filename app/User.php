@@ -51,6 +51,7 @@ class User extends Authenticatable
                                                                     ->withPivot([
                                                                         'status',
                                                                         'day_off',
+                                                                        'user_complete'
                                                                     ]);;
     }
 }

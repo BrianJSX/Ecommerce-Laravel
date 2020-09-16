@@ -107,6 +107,73 @@
         <div class="col-md-12 stretch-card">
         <div class="card">
             <div class="card-body">
+            <p class="card-title">Hôm nay phải làm</p>
+            <div class="table-responsive">
+                <table id="recent-purchases-listing-today" class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Công việc</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày làm</th>
+                        <th>Tiền công</th>
+                        <th>Tình trạng</th>
+                        {{-- <th>Vắng</th> --}}
+                        <th>Action</th>
+                        <th>ID User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($tasksToday as $task_today)
+                    <tr @if($task_today->pivot->status == 0 || $task_today->pivot->day_off == 1) style="background-color: #f5c4c4" @else style="background-color: #d0f5c4; @endif" >
+                        <td>{{$task_today->id}}</td>
+                        <td>{{$task_today->job}}</td>
+                        <td>{{$task_today->address}}</td>
+                        <td>{{\Carbon\Carbon::parse($task_today->day_work)->format('d/m/Y')}}</td>
+                        <td>{{number_format($task_today->money)}}</td>
+                        <td>
+                            @if($task_today->pivot->status == 0)
+                                <label class="badge badge-danger">Chưa làm</label>
+                            @else
+                                <label class="badge badge-success">Hoàn thành</label>
+                            @endif
+
+                        </td>
+                        {{-- <td>
+                            @if($task_today->pivot->day_off == 0)
+                                <button type="button" class="btn btn-success">Không vắng</button>
+                            @else
+                                <button type="button" class="btn btn-danger">Vắng</button>
+                            @endif
+                        </td> --}}
+                        <td>
+                            @if($task_today->pivot->status == 0)
+                                <button onclick="location.href='{{route('taskUserWork',[$task_today->id, $userId])}}'" type="button" class="btn btn-success">Ấn hoàn thành</button>
+                            @else
+                                <button onclick="location.href='{{route('taskUserNotWork',[$task_today->id, $userId])}}'" type="button" class="btn btn-outline-danger">Ấn chưa làm</button>
+                            @endif
+                        </td>
+                        <td>{{$task_today->pivot->user_complete}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="col-sm-12 col-md-7">
+            <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                <ul class="pagination">
+                    {{-- {{ $orderdetail->links() }} --}}
+                </ul>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
             <p class="card-title">Task</p>
             <div class="table-responsive">
                 <table id="recent-purchases-listing" class="table">
@@ -120,6 +187,7 @@
                         <th>Tình trạng</th>
                         {{-- <th>Vắng</th> --}}
                         <th>Action</th>
+                        <th>ID User</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -152,6 +220,7 @@
                                 <button onclick="location.href='{{route('taskUserNotWork',[$task->id, $userId])}}'" type="button" class="btn btn-outline-danger">Ấn chưa làm</button>
                             @endif
                         </td>
+                        <td>{{$task->pivot->user_complete}}</td>
                     </tr>
                 @endforeach
                 </tbody>
