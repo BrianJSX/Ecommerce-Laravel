@@ -9,7 +9,7 @@ use DB;
 use Cart;
 class HomeControler extends Controller
 {
-    
+
     public function index(){
         $data['productnew'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
                                                     ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
@@ -25,22 +25,22 @@ class HomeControler extends Controller
         $data['newsindex'] = DB::table('tbl_news as A')->join('users as B','A.news_author','=','B.id')
                                                     ->select('A.news_id','A.news_title','A.news_slug','A.news_description','A.news_author','A.news_img','A.news_status','A.created_at','B.name')
                                                     ->orderBy('A.news_id','desc')
-                                                    ->limit(3) 
-                                                    ->get();     
+                                                    ->limit(3)
+                                                    ->get();
          //Get Cart detail
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
+            $data['productcart'] = $cartcontent;
             $data['countcart'] = count($cartcontent);
-        //end Get cart  
+        //end Get cart
 
         return view('pages.index-content',$data);
     }
     public function showdetailindex($slug){
         $result = DB::table('vp_product')->where('prod_slug',$slug)->count();
         if ($result>0) {
-            
+
             $data['productdetail'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
                                                             ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
                                                             ->where('vp_product.prod_slug',$slug)
@@ -52,24 +52,25 @@ class HomeControler extends Controller
             $data['ProductGenerally'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
                                                               ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
                                                             ->where('tbl_category_product.category_id',$categoryGenerally)
+                                                            ->where('vp_product.prod_slug', '!=', $slug )
                                                             ->orderBy('vp_product.prod_id','desc')
-                                                            ->limit(5)
-                                                            ->get();
+                                                            ->get()
+                                                            ->random(5);
             $data['producttitle'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_name');
             $data['productimageOg'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_img');
             $data['productcodeOg'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_code');
-            
 
-            
-            
+
+
+
 
         //Get Cart detail
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart  
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
 
             return view('pages.product-detail',$data);
         }else{
@@ -85,9 +86,9 @@ class HomeControler extends Controller
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart                                                
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
         return view('pages.shop',$data);
     }
     public function getsearch(Request $request){
@@ -97,7 +98,7 @@ class HomeControler extends Controller
         $data['items'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
                                                 ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
                                                 ->where('prod_name','LIKE','%'.$results.'%')
-                                                ->orwhere('prod_code','LIKE','%'.$results.'%') 
+                                                ->orwhere('prod_code','LIKE','%'.$results.'%')
                                                 ->paginate(32);
         $data['items']->appends(['result' => $result]);
 
@@ -105,9 +106,9 @@ class HomeControler extends Controller
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart                                                                                        
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
         return view('pages.search',$data);
     }
     public function getcategoryshop($slug){
@@ -128,9 +129,9 @@ class HomeControler extends Controller
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                         
-        //end Get cart           
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
 
             return view('pages.category-shop',$data);
         }else{
@@ -154,10 +155,10 @@ class HomeControler extends Controller
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart     
-            
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
+
             return view('pages.brand-shop',$data);
         }else{
             return redirect()->route('home');
@@ -172,7 +173,7 @@ class HomeControler extends Controller
                                                     ->get();
             $data['newsrecent'] = DB::table('tbl_news as A')->join('users as B','A.news_author','=','B.id')
                                                     ->orderBy('A.news_id','desc')
-                                                    ->limit(8) 
+                                                    ->limit(8)
                                                     ->get();
             $data['newstitle'] =  DB::table('tbl_news')->where('news_slug',$slug)->value('news_title');
             $data['newsdate'] =  DB::table('tbl_news')->where('news_slug',$slug)->value('created_at');
@@ -182,9 +183,9 @@ class HomeControler extends Controller
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart  
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
 
             return view('pages.newsdetail',$data);
         }else{
@@ -195,18 +196,18 @@ class HomeControler extends Controller
         $data['newsblog'] = DB::table('tbl_news as A')->join('users as B','A.news_author','=','B.id')
                                                     ->select('A.news_id','A.news_title','A.news_slug','A.news_description','A.news_author','A.news_img','A.news_status','A.created_at','B.name')
                                                     ->orderBy('A.news_id','desc')
-                                                    ->paginate(3);    
+                                                    ->paginate(3);
         $data['newsrecent'] = DB::table('tbl_news as A')->join('users as B','A.news_author','=','B.id')
                                                     ->orderBy('A.news_id','desc')
-                                                    ->limit(4) 
+                                                    ->limit(4)
                                                     ->get();
          //Get Cart detail
             $cartcontent = Cart::getContent();
             $data['totalsub'] = Cart::getSubTotal();
             $data['total'] = Cart::getTotal();
-            $data['productcart'] = $cartcontent;     
-            $data['countcart'] = count($cartcontent);                                          
-        //end Get cart                                                                                                
+            $data['productcart'] = $cartcontent;
+            $data['countcart'] = count($cartcontent);
+        //end Get cart
         return view('pages.news',$data);
     }
 

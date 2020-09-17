@@ -26,7 +26,9 @@
     15. Scrollup
 
 -----------------------------------------------------------------------------------*/
-
+body{
+    font-family: 'Times New Roman', Times, serif !important;
+}
 @font-face {
     font-family: 'Painter PERSONAL USE ONLY';
     src: url('../fonts/PainterPERSONALUSEONLY.eot');
@@ -34,6 +36,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 
 /*call phone*/
         .hotline-phone-ring-wrap {
@@ -1094,7 +1097,6 @@ a.slider-btn:hover::before {
 .product-wrapper{
  border-radius: 15px;
  padding:10px;
- box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 .product-wrapper:hover{
  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
@@ -1546,6 +1548,11 @@ a.slider-btn:hover::before {
     display: flex;
     justify-content: space-between;
     padding: 50px;
+
+}
+.modal-body img{
+    height: auto !important;
+    width: 100% !important;
 }
 .modal-dialog {
     margin: 150px auto;
@@ -3415,7 +3422,6 @@ button.product-filter-toggle:hover,
 
 .product-details-content{
     padding:20px;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 .product-details-content h2 {
     color: #646464;

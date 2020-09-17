@@ -40,7 +40,7 @@
                         <div class="col-lg-6">
                             <div class="product-details-img-content">
                                 <div class="product-details-tab mr-40">
-                                    <div class="product-details-large tab-content" style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)">
+                                    <div class="product-details-large tab-content">
                                         <div class="tab-pane active" id="pro-details1" style="">
                                             <div class="easyzoom easyzoom--overlay">
                                                 <a href="{{asset('storage/app/'.$productdetail->prod_code.'/'.$productdetail->prod_img)}}">
@@ -77,16 +77,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mt-3" style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)">
+                                    <div class="mt-3" >
                                         <div class="p-3" style="border-buttom: 2px solid gray">
                                             SẢN PHẨM LIÊN QUAN
                                         </div>
                                         <div class="product-details-small mt-0 product-dec-slider owl-carousel">
                                             @foreach($ProductGenerally as $ProductGenerally)
                                                 <div>
-
-                                                      <img src="{{asset('storage/app/'.$ProductGenerally->prod_code.'/'.$ProductGenerally->prod_img)}}" onclick="location.href='{{route('productdetailindex',$ProductGenerally->prod_slug)}}'" alt="">
-
+                                                      <img style="border-radius: 20px" src="{{asset('storage/app/'.$ProductGenerally->prod_code.'/'.$ProductGenerally->prod_img)}}" onclick="location.href='{{route('productdetailindex',$ProductGenerally->prod_slug)}}'" alt="">
                                                 </div>
                                             @endforeach
                                         </div>
@@ -98,10 +96,6 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="col-lg-3">
-
-                            </div>
-                            <div>
-
                             </div>
                             <div class="product-details-content">
                                 <div class="mb-4">
@@ -131,14 +125,32 @@
 
                                 <div class="product-overview" id="okaaa">
                                     <h5 class="pd-sub-title">Thông tin mô tả</h5>
-                                            <button id="btn1" class="btn btn-primary ">Ẩn chi tiết</button>
-                                            <span class="col-md-1"></span>
-                                            <button id="btn2" class="btn btn-primary ">Hiện chi tiết</button>
-                                            <span class="col-md-6"></span>
-                                            <div id="content" style="display:none;margin-top:30px">
-                                                    {!!$productdetail->prod_description !!}
+                                            <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalLong">
+                                        Xem thông tin chi tiết
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Thông tin chi tiết</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
                                             </div>
+                                            <div class="modal-body">
+                                            {!! $productdetail->prod_description !!}
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <form action="{{route('cartadd',$productdetail->prod_id)}}">
                                     <div class="quickview-plus-minus">
                                         <div class="cart-plus-minus">
@@ -217,6 +229,30 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-logo-area hm-4-padding mt-4">
+                    <div class="container-fluid">
+                        <div class="brand-logo-active owl-carousel gray-bg ptb-130">
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/1.png')}}">
+                            </div>
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/2.png')}}">
+                            </div>
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/3.png')}}">
+                            </div>
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/4.png')}}">
+                            </div>
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/5.png')}}">
+                            </div>
+                            <div class="single-logo">
+                                <img alt="" src="{{asset('./public/frontend/assets/img/brand-logo/3.png')}}">
                             </div>
                         </div>
                     </div>

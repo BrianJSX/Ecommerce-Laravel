@@ -193,7 +193,7 @@
                                         </button>
                                     </div>
                                     <div class="header-login same-style">
-                                        <a href="{{URL::to('admin')}}">
+                                        <a href="{{URL::to('staff')}}">
                                             <span class="ti-user"></span>
                                         </a>
                                     </div>
@@ -348,7 +348,7 @@
                                                 <i class="ion-ios-email-outline"></i>
                                             </div>
                                             <div class="food-info-content">
-                                                <p><a href="#">minhho.technology@gmail.com</a></p>
+                                                <p><a href="#">admin@diennuocphucloc.com</a></p>
                                             </div>
                                         </div>
                                     </div>
