@@ -5,6 +5,7 @@
  <div class="breadcrumb-area mt-37 hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
+            <hr>
             <h2 style="font-family:'Times New Roman', Times, serif"><strong>Thương Hiệu<strong></h2>
             <ul>
                 <li>
@@ -15,21 +16,7 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-1-padding">
-                <div class="container-fluid">
-                   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- QC_brandproduct -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8602037860916317"
-                         data-ad-slot="4348666059"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-</div> 
+@include('pages.banner')
 <div class="shop-wrapper hm-3-padding mt-3 pt-20 pb-100">
         <div class="container-fluid">
             <div class="row">
@@ -65,7 +52,7 @@
                                     @foreach ($brandshopall as $brandshop)
                                         <li><a href="{{route('getbrandshop',$brandshop->brand_slug)}}">{{$brandshop->brand_name}}</a></li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
@@ -97,7 +84,7 @@
                             @foreach ($brandname as $brandname)
                                 <span class="mb-4" style="font-size:30px">Thương Hiệu: {{$brandname->brand_name}}</span>
                             @endforeach
-                           
+
                         </div>
                         <div class="row">
                             @foreach ($productbrand as $productshow)

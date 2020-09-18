@@ -2,9 +2,10 @@
 @section('title', 'Thanh Toán Giỏ Hàng')
 @section('CartComplete')
 <div class="header-height"></div>
-<div class="breadcrumb-area mt-37 hm-4-padding">
+<div class="breadcrumb-area hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
+            <hr>
             <h2 style="font-family:'Times New Roman', Times, serif"><strong>Thanh Toán<strong></h2>
             <ul>
                 <li>
@@ -15,21 +16,7 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-4-padding">
-   <div class="container-fluid">
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- QC_brandproduct -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8602037860916317"
-             data-ad-slot="4348666059"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-</div> 
+@include('pages.banner')
 <!-- checkout-area start -->
 <div class="checkout-area pt-20 mt-5 hm-3-padding pb-100">
     <div class="container-fluid">
@@ -50,11 +37,11 @@
                                     <label>Password  <span class="required">*</span></label>
                                     <input type="text" />
                                 </p>
-                                <p class="form-row">					
+                                <p class="form-row">
                                     <input type="submit" value="Login" />
                                     <label>
                                         <input type="checkbox" />
-                                         Remember me 
+                                         Remember me
                                     </label>
                                 </p>
                                 <p class="lost-password">
@@ -63,7 +50,7 @@
                             </form>
                         </div>
                     </div> --}}
-                    <!-- ACCORDION END -->	
+                    <!-- ACCORDION END -->
                     <!-- ACCORDION START -->
                     {{-- <h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
                     <div id="checkout_coupon" class="coupon-checkout-content">
@@ -76,20 +63,20 @@
                             </form>
                         </div>
                     </div> --}}
-                    <!-- ACCORDION END -->						
+                    <!-- ACCORDION END -->
                 </div>
             </div>
         </div>
     <form method="post">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
-                    <div class="checkbox-form">						
+                    <div class="checkbox-form">
                         <h3>Chi tiết thanh toán</h3>
                         <div class="row">
                             <form action="">
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Họ tên người nhận <span class="required">*</span></label>										
+                                        <label>Họ tên người nhận <span class="required">*</span></label>
                                         <input name="name" type="text" placeholder="" required/>
                                     </div>
                                 </div>
@@ -101,25 +88,25 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list">
-                                        <label>Email<span class="required">*</span></label>										
+                                        <label>Email<span class="required">*</span></label>
                                         <input name="email" type="email" required/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="checkout-form-list">
-                                        <label>Phone<span class="required">*</span></label>										
+                                        <label>Phone<span class="required">*</span></label>
                                         <input name="phone" name="number" type="text" required/>
                                     </div>
                                 </div>
                             {{-- <div class="col-md-12">
-                                <div class="checkout-form-list create-acc">	
+                                <div class="checkout-form-list create-acc">
                                     <input id="cbox" type="checkbox" />
                                     <label>Create an account?</label>
                                 </div>
                                 <div id="cbox_info" class="checkout-form-list create-account">
                                     <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
                                     <label>Account password  <span class="required">*</span></label>
-                                    <input type="password" placeholder="password" />	
+                                    <input type="password" placeholder="password" />
                                 </div>
                             </div>								 --}}
                         </div>
@@ -143,18 +130,18 @@
                                           <option value="audi3">Bahrain</option>
                                           <option value="audi4">Colombia</option>
                                           <option value="audi5">Dominican Republic</option>
-                                        </select> 										
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>First Name <span class="required">*</span></label>										
+                                        <label>First Name <span class="required">*</span></label>
                                         <input type="text" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Last Name <span class="required">*</span></label>										
+                                        <label>Last Name <span class="required">*</span></label>
                                         <input type="text" placeholder="" />
                                     </div>
                                 </div>
@@ -171,7 +158,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="checkout-form-list">									
+                                    <div class="checkout-form-list">
                                         <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
                                     </div>
                                 </div>
@@ -183,39 +170,39 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>State / County <span class="required">*</span></label>										
+                                        <label>State / County <span class="required">*</span></label>
                                         <input type="text" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Postcode / Zip <span class="required">*</span></label>										
+                                        <label>Postcode / Zip <span class="required">*</span></label>
                                         <input type="text" placeholder="Postcode / Zip" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Email Address <span class="required">*</span></label>										
+                                        <label>Email Address <span class="required">*</span></label>
                                         <input type="email" placeholder="" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="checkout-form-list">
-                                        <label>Phone  <span class="required">*</span></label>										
+                                        <label>Phone  <span class="required">*</span></label>
                                         <input type="text" placeholder="Postcode / Zip" />
                                     </div>
-                                </div>								
+                                </div>
                             </div> --}}
                             <div class="order-notes">
                                 <div class="checkout-form-list mrg-nn">
                                     <label>Ghi chú đặt hàng</label>
                                     <textarea name="notes" id="checkout-mess" cols="30" rows="10" placeholder="Ghi chú về đơn đặt hàng của bạn, ví dụ ghi chú đặc biệt để giao hàng." ></textarea>
-                                </div>									
+                                </div>
                             </div>
                             {{csrf_field()}}
-                        </div>													
+                        </div>
                     </div>
-            </div>	
+            </div>
             <div class="col-lg-6 col-md-12 col-12">
                 <div class="your-order">
                     <h3>Đơn hàng của bạn</h3>
@@ -225,7 +212,7 @@
                                 <tr>
                                     <th class="product-name">Sản phẩm</th>
                                     <th class="product-total">Tổng tiền</th>
-                                </tr>							
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($productcart as $product)
@@ -248,17 +235,17 @@
                                     <th>Tổng đơn hàng</th>
                                     <td><strong><span class="amount">{{number_format($total)}} VNĐ</span></strong>
                                     </td>
-                                </tr>								
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
-                    <div class="payment-method mt-40"> 
+                    <div class="payment-method mt-40">
                             <div class="order-button-payment">
                                 <input type="submit" value="Đặt hàng" />
-                            </div>	
+                            </div>
                             <div class="mt-2" style="text-align:center">
                                 <a style="font-size:20px" href="{{route('cartshow')}}">click để chỉnh sửa đơn hàng</a>
-                            </div>	 				
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -267,6 +254,6 @@
     </div>
     </form>
 </div>
-<!-- checkout-area end -->	
+<!-- checkout-area end -->
 
 @endsection

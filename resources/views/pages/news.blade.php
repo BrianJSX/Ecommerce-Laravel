@@ -2,10 +2,10 @@
 @section('title', 'Tin Tức - Blogger')
 @section('NewsBlog')
 <div class="header-height"></div>
-
     <div class="breadcrumb-area mt-37 hm-4-padding">
         <div class="container-fluid">
             <div class="breadcrumb-content text-center">
+                <hr>
                 <h2 style="font-family:'Times New Roman', Times, serif"><strong>Tin Tức - Blogger<strong></h2>
                 <ul>
                     <li>
@@ -16,21 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="banner-area hm-4-padding">
-        <div class="container-fluid">
-           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- qc_x2 -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-8602037860916317"
-                 data-ad-slot="2334776613"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-    </div> 
+    @include('pages.banner')
                 <!-- blog-area start -->
                 <div class="blog-area mt-3 pb-125 hm-3-padding">
                     <div class="container-fluid">
@@ -136,7 +122,7 @@
                                         <div class="single-blog-wrapper mb-80">
                                             <div class="blog-content">
                                                 {{-- <h2><a href="{{route('newsdetail',$news->news_id)}}" style="font-family:'Times New Roman', Times, serif">{{Str::words($news->news_title, 10,'....')}}</a></h2> --}}
-                                                
+
                                             </div>
                                             {{-- <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercit ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p> --}}
                                             <div class="single-blog-wrapper">
@@ -152,7 +138,7 @@
                                             </div>
                                             <div class="blog-date-categori">
                                                 <ul>
-                                                    
+
                                                     <li><b>Người Đăng: </b><a href="#">{{$news->name}}</a></li>
                                                 </ul>
                                             </div>
@@ -173,7 +159,7 @@
                                                 </div>
                                         </div>
                                     @endforeach
-                                    
+
                                     </div>
                                     {{-- <div class="single-blog-wrapper mb-80">
                                         <blockquote>

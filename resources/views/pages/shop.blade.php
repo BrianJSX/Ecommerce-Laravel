@@ -2,9 +2,10 @@
 @section('title', 'Shop Mua Sắm Thỏa Thích')
 @section('ShopContent')
 <div class="header-height"></div>
- <div class="breadcrumb-area mt-37 hm-4-padding">
+ <div class="breadcrumb-area hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
+            <hr>
             <h2 style="font-family:'Times New Roman', Times, serif"><strong>Cửa Hàng<strong></h2>
             <ul>
                 <li>
@@ -15,23 +16,8 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-4-padding">
-    <div class="container-fluid">
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- qc_x2 -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8602037860916317"
-             data-ad-slot="2334776613"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-</div> 
-
-<div class="shop-wrapper mt-3 hm-3-padding pt-20 pb-100">
+@include('pages.banner')
+<div class="shop-wrapper hm-3-padding pt-20 pb-100">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -53,24 +39,20 @@
                     <div class="product-filter-wrapper">
                         <div class="row">
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                <h5 style="font-family:'Times New Roman', Times, serif">Danh mục nổi bật</h5>
+                                <h5 style="font-family:'Times New Roman', Times, serif">Tất cả danh mục</h5>
                                 <ul class="sort-by">
-                                    @foreach ($categoryindex as $category)
-                                        @if ($category->category_status == 1)
+                                    @foreach ($categoryshopall as $category)
                                         <li><a href="{{route('getcategoryshop',$category->category_slug)}}">{{$category->category_name}}</a></li>
-                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
-                                <h5 style="font-family:'Times New Roman', Times, serif">Thương hiệu nổi bật</h5>
+                                <h5 style="font-family:'Times New Roman', Times, serif">Tất cả thương hiệu</h5>
                                 <ul class="color-filter">
-                                    @foreach ($brandindex as $brand)
-                                       @if ($brand->brand_status == 1)
+                                    @foreach ($brandshopall as $brand)
                                             <li><a href="{{route('getbrandshop',$brand->brand_slug)}}">{{$brand->brand_name}}</a></li>
-                                       @endif
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">

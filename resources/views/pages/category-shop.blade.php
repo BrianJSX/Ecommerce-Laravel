@@ -2,9 +2,10 @@
 @section('title', "Danh Mục - $categorytitle")
 @section('ShopContent')
 <div class="header-height"></div>
-<div class="breadcrumb-area mt-37 hm-4-padding">
+<div class="breadcrumb-area hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
+            <hr>
             <h2 style="font-family:'Times New Roman', Times, serif"><strong>Danh Mục Sản Phẩm<strong></h2>
             <ul>
                 <li>
@@ -15,21 +16,7 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-4-padding">
-                <div class="container-fluid">
-                   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- QC_CategoryProduct -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8602037860916317"
-                         data-ad-slot="2600949042"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-</div> 
+@include('pages.banner')
 <div class="shop-wrapper mt-3 hm-3-padding pt-20 pb-100">
         <div class="container-fluid">
             <div class="row">
@@ -65,7 +52,7 @@
                                     @foreach ($brandshopall as $brandshop)
                                         <li><a href="{{route('getbrandshop',$brandshop->brand_slug)}}">{{$brandshop->brand_name}}</a></li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
@@ -97,7 +84,7 @@
                             @foreach ($categoryname as $categoryname)
                                 <span class="mb-4" style="font-size:30px">Danh mục: {{$categoryname->category_name}}</span>
                             @endforeach
-                           
+
                         </div>
                         <div class="row">
                             @foreach ($productcategory as $productshow)

@@ -4,10 +4,11 @@
 @section('NewsDetail')
 
 <div class="header-height"></div>
-<div class="breadcrumb-area mt-37 hm-4-padding">
+<div class="breadcrumb-area hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
-           <h2 style="font-family:'Times New Roman', Times, serif"><strong>Chi Tiết Tin Tức - Blogger<strong></h2>
+            <hr>
+           <h2 style="font-family:'Times New Roman', Times, serif"><strong>Chi Tiết Tin Tức<strong></h2>
             <ul>
                 <li>
                     <a href="#">news</a>
@@ -17,21 +18,7 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-4-padding">
-    <div class="container-fluid">
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- QC_HEADER -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8602037860916317"
-             data-ad-slot="8825476421"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-</div> 
+@include('pages.banner')
 
 <!-- blog-area start -->
 <div class="blog mt-3 pb-125 hm-3-padding">
@@ -56,8 +43,8 @@
                         <div class="blog-content">
                             <p style="font-family:'Times New Roman', Times, serif"> {!! $news->news_description !!}</p>
                         </div>
-                        
-                       
+
+
                         {{-- <div class="blog-dec-tags-social">
                             <div class="blog-dec-tags">
                                 <ul>
@@ -176,7 +163,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            
+
                         </div>
                     </div>
                     <div class="blog-widget mb-60">

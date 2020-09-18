@@ -2,35 +2,22 @@
 @section('title', 'Tìm Kiếm Sản Phẩm')
 @section('Searchindex')
 <div class="header-height"></div>
-            <div class="breadcrumb-area mt-37 hm-4-padding">
-                <div class="container-fluid">
-                    <div class="breadcrumb-content text-center">
-                        <h2 style="font-family:'Times New Roman', Times, serif"><b>Tìm Kiếm Sản Phẩm</b></h2>
-                        <ul>
-                            <li>
-                                <a href="{{route('home')}}">home</a>
-                            </li>
-                            <li>search</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-<div class="banner-area hm-4-padding">
-                <div class="container-fluid">
-                   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- qc_x2 -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8602037860916317"
-                         data-ad-slot="2334776613"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-</div> 
-<div class="shop-wrapper mt-3 hm-3-padding pt-20 pb-100">
+ <div class="breadcrumb-area hm-4-padding">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center">
+            <hr>
+            <h2 style="font-family:'Times New Roman', Times, serif"><strong>Tìm kiếm sản phẩm<strong></h2>
+            <ul>
+                <li>
+                    <a href="#">Trangchu</a>
+                </li>
+                <li>search</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@include('pages.banner')
+<div class="shop-wrapper hm-3-padding pt-20 pb-100">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -65,7 +52,7 @@
                                     @foreach ($brandshopall as $brandshop)
                                         <li><a href="{{route('getbrandshop',$brandshop->brand_slug)}}">{{$brandshop->brand_name}}</a></li>
                                     @endforeach
-                                    
+
                                 </ul>
                             </div>
                             <div class="product-filter col-md-3 col-sm-6 col-xs-12 mb-30">
@@ -200,7 +187,7 @@
                                             <div class="shop-list-cart">
                                                 <a href="javascript:void(0)" onclick="addCartIndex('{{$item->prod_id}}')"> <i class="ti-shopping-cart"></i> Add to cart</a>
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +195,7 @@
                         </div>
                         <div class=" text-center mt-30">
                             <ul>
-                                    {{ $items->links() }} 
+                                    {{ $items->links() }}
                             </ul>
                         </div>
                     </div>

@@ -23,6 +23,7 @@
 <div class="breadcrumb-area mt-37 hm-4-padding">
     <div class="container-fluid">
         <div class="breadcrumb-content text-center">
+            <hr>
             <h2 style="font-family:'Times New Roman', Times, serif"><strong>GIỎ HÀNG<strong></h2>
             <ul>
                 <li>
@@ -33,21 +34,7 @@
         </div>
     </div>
 </div>
-<div class="banner-area hm-4-padding">
-                <div class="container-fluid">
-                   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- QC_brandproduct -->
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-8602037860916317"
-                         data-ad-slot="4348666059"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-</div> 
+@include('pages.banner')
 
 {{-- cart content --}}
 <div class="product-cart-area hm-3-padding pt-80 pb-130 " >
@@ -148,7 +135,7 @@
                 <div class="cart-btn text-center mb-15">
                     <a href="{{route('cartcomplete')}}">Thanh Toán</a>
                 </div>
-               
+
             </div>
         </div>
     </div>

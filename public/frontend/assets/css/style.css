@@ -28,7 +28,9 @@
 -----------------------------------------------------------------------------------*/
 body{
     font-family: 'Times New Roman', Times, serif !important;
+    background-color: #f5f5f5;
 }
+
 @font-face {
     font-family: 'Painter PERSONAL USE ONLY';
     src: url('../fonts/PainterPERSONALUSEONLY.eot');
@@ -1098,8 +1100,8 @@ a.slider-btn:hover::before {
  border-radius: 15px;
  padding:10px;
 }
-.product-wrapper:hover{
- box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+.product-wrapper img{
+    border-radius: 20px;
 }
 .product-img {
     overflow: hidden;
@@ -3387,6 +3389,9 @@ button.product-filter-toggle:hover,
 .product-details-large .easyzoom > a img {
     width: 100%;
 }
+.product-details-large img{
+    border-radius: 10px;
+}
 .product-dec-slider.owl-carousel .owl-nav div {
     background-color: #fff;
     border-radius: 50px;
@@ -4349,6 +4354,10 @@ p.checkout-coupon input[type="submit"] {
 }
 .blog-img img {
     width: 100%;
+}
+.blog-content img{
+    height: auto !important;
+    width: 100% !important;
 }
 .blog-content > h2 {
     color: #444;

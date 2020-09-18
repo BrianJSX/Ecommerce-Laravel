@@ -3,9 +3,10 @@
 @section('title', "$producttitle")
 @section('ContentProductDetail')
 <div class="header-height"></div>
-            <div class="breadcrumb-area mt-37 hm-4-padding">
+            <div class="breadcrumb-area hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
+                        <hr>
                         <h2 style="font-family:'Times New Roman', Times, serif"><strong>Chi tiết sản phẩm</strong></h2>
                         <ul>
                             <li>
@@ -16,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="banner-area hm-4-padding">
+            {{-- <div class="banner-area hm-4-padding">
                  <div class="container-fluid">
                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                     <!-- qc_x2 -->
@@ -30,7 +31,7 @@
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-            </div>
+            </div> --}}
             @foreach ($productdetail as $productdetail)
             <div class="product-details-area mt-5 hm-3-padding ptb-3 pb-10 mb-20">
                 <div class="container-fluid">
