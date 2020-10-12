@@ -49,13 +49,29 @@ class HomeControler extends Controller
                                                             ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
                                                             ->where('vp_product.prod_slug',$slug)
                                                             ->value('category_id');
-            $data['ProductGenerally'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
+            $productCount =  DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
+                                                    ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
+                                                    ->where('tbl_category_product.category_id',$categoryGenerally)
+                                                    ->where('vp_product.prod_slug', '!=', $slug )
+                                                    ->orderBy('vp_product.prod_id','desc')
+                                                    ->count();
+            if($productCount > 5) {
+                $data['ProductGenerally'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
                                                               ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
                                                             ->where('tbl_category_product.category_id',$categoryGenerally)
                                                             ->where('vp_product.prod_slug', '!=', $slug )
                                                             ->orderBy('vp_product.prod_id','desc')
                                                             ->get()
                                                             ->random(5);
+            } else {
+                $data['ProductGenerally'] = DB::table('vp_product')->join('tbl_category_product','vp_product.prod_cate','=','tbl_category_product.category_id')
+                                                              ->join('tbl_brand','tbl_category_product.category_brand','=','tbl_brand.brand_id')
+                                                            ->where('tbl_category_product.category_id',$categoryGenerally)
+                                                            ->where('vp_product.prod_slug', '!=', $slug )
+                                                            ->orderBy('vp_product.prod_id','desc')
+                                                            ->get();
+            }
+
             $data['producttitle'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_name');
             $data['productimageOg'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_img');
             $data['productcodeOg'] = DB::table('vp_product')->where('prod_slug',$slug)->value('prod_code');
